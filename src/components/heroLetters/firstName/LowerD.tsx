@@ -1,5 +1,8 @@
 import Bar from '../Bar';
 
+/**
+ * @returns A component comprised of dyanmically moving Bar components that constructs an 'd'.
+ */
 export default function LowerD() {
   return (
     <div className="flex items-end h-[288px]">

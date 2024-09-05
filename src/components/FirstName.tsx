@@ -1,6 +1,7 @@
 import E from "./heroLetters/firstName/E";
 import LowerA from "./heroLetters/firstName/LowerA";
 import LowerD from "./heroLetters/firstName/LowerD";
+import LowerN from "./heroLetters/firstName/LowerN";
 
 export default function FirstName() {
 
@@ -12,9 +13,10 @@ export default function FirstName() {
         <div className="-mr-1">
             <LowerD />
         </div>
-        <div className="">
+        <div className="mr-8">
             <LowerA />
         </div>
+        <LowerN />
       </div>
     )
 }
