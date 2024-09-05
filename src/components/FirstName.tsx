@@ -12,7 +12,7 @@ export default function FirstName() {
         <div className="-mr-1">
             <LowerD />
         </div>
-        <div className="scale-95 relative top-[6px]">
+        <div className="">
             <LowerA />
         </div>
       </div>

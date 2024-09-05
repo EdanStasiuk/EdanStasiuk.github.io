@@ -4,305 +4,215 @@ import Bar from '../Bar';
  * @returns A component comprised of dyanmically moving Bar components that constructs an 'a'.
  */
 export default function LowerA() {
+  const barGroup1 = [
+    { h: 'h-[41px]', mb: 'mb-[22px]' },
+    { h: 'h-[52px]', mb: 'mb-[17px]' },
+    { h: 'h-[66px]', mb: 'mb-[11px]' },
+    { h: 'h-[73px]', mb: 'mb-[8px]' },
+  ];
+
+  const barGroup2 = [
+    [
+      { h: 'h-[13px]', mb: 'mb-[24px]' },
+      { h: 'h-[79px]', mb: 'mb-[5px]' },
+    ],
+    [
+      { h: 'h-[23px]', mb: 'mb-[21px]' },
+      { h: 'h-[84px]', mb: 'mb-[3px]' },
+    ],
+    [
+      { h: 'h-[31px]', mb: 'mb-[19px]' },
+      { h: 'h-[87px]', mb: 'mb-[2px]' },
+    ],
+    [
+      { h: 'h-[41px]', mb: 'mb-[17px]' },
+      { h: 'h-[90px]', mb: 'mb-[1px]' },
+    ],
+    [
+      { h: 'h-[46px]', mb: 'mb-[15px]' },
+      { h: 'h-[93px]', mb: '' },
+    ],
+    [
+      { h: 'h-[51px]', mb: 'mb-[14px]' },
+      { h: 'h-[94px]', mb: '' },
+    ],
+    [
+      { h: 'h-[55px]', mb: 'mb-[13px]' },
+      { h: 'h-[94px]', mb: 'mb-[1px]' },
+    ],
+    [
+      { h: 'h-[58px]', mb: 'mb-[12px]' },
+      { h: 'h-[94px]', mb: 'mb-[2px]' },
+    ],
+    [
+      { h: 'h-[61px]', mb: 'mb-[11px]' },
+      { h: 'h-[95px]', mb: 'mb-[2px]' },
+    ],
+  ];
+
+  const barGroup3 = [
+    [
+      { h: 'h-[63px]', mb: 'mb-[11px]' },
+      { h: 'h-[36px]', mb: 'mb-[11px]' },
+      { h: 'h-[47px]', mb: 'mb-[3px]' },
+    ],
+    [
+      { h: 'h-[65px]', mb: 'mb-[10px]' },
+      { h: 'h-[33px]', mb: 'mb-[20px]' },
+      { h: 'h-[41px]', mb: 'mb-[4px]' },
+    ],
+    [
+      { h: 'h-[55px]', mb: 'mb-[22px]' },
+      { h: 'h-[30px]', mb: 'mb-[25px]' },
+      { h: 'h-[37px]', mb: 'mb-[6px]' },
+    ],
+    [
+      { h: 'h-[47px]', mb: 'mb-[31px]' },
+      { h: 'h-[29px]', mb: 'mb-[28px]' },
+      { h: 'h-[34px]', mb: 'mb-[8px]' },
+    ],
+    [
+      { h: 'h-[44px]', mb: 'mb-[34px]' },
+      { h: 'h-[28px]', mb: 'mb-[29px]' },
+      { h: 'h-[33px]', mb: 'mb-[10px]' },
+    ],
+    [
+      { h: 'h-[42px]', mb: 'mb-[36px]' },
+      { h: 'h-[28px]', mb: 'mb-[28px]' },
+      { h: 'h-[33px]', mb: 'mb-[12px]' },
+    ],
+    [
+      { h: 'h-[40px]', mb: 'mb-[38px]' },
+      { h: 'h-[28px]', mb: 'mb-[27px]' },
+      { h: 'h-[33px]', mb: 'mb-[14px]' },
+    ],
+    [
+      { h: 'h-[39px]', mb: 'mb-[38px]' },
+      { h: 'h-[28px]', mb: 'mb-[25px]' },
+      { h: 'h-[31px]', mb: 'mb-[19px]' },
+    ],
+    [
+      { h: 'h-[41px]', mb: 'mb-[36px]' },
+      { h: 'h-[28px]', mb: 'mb-[21px]' },
+      { h: 'h-[31px]', mb: 'mb-[24px]' },
+    ],
+    [
+      { h: 'h-[42px]', mb: 'mb-[33px]' },
+      { h: 'h-[29px]', mb: 'mb-[12px]' },
+      { h: 'h-[40px]', mb: 'mb-[25px]' },
+    ],
+  ];
+
+  const barGroup4 = [
+    [
+      { h: 'h-[43px]', mb: 'mb-[28px]' },
+      { h: 'h-[92px]', mb: 'mb-[18px]' },
+    ],
+    [
+      { h: 'h-[48px]', mb: 'mb-[16px]' },
+      { h: 'h-[105px]', mb: 'mb-[12px]' },
+    ],
+  ];
+
+  const barGroup5 = [
+    { h: 'h-[172px]', mb: 'mb-[8px]' },
+    { h: 'h-[175px]', mb: 'mb-[5px]' },
+    { h: 'h-[176px]', mb: 'mb-[3px]' },
+    { h: 'h-[177px]', mb: 'mb-[1px]' },
+    { h: 'h-[177px]', mb: '' },
+    { h: 'h-[175px]', mb: '' },
+    { h: 'h-[173px]', mb: '' },
+    { h: 'h-[168px]', mb: 'mb-[1px]' },
+    { h: 'h-[163px]', mb: 'mb-[2px]' },
+    { h: 'h-[158px]', mb: 'mb-[4px]' },
+  ];
+
+  const barGroup6 = [
+    [
+      { h: 'h-[91px]', mb: 'mb-[20px]' },
+      { h: 'h-[42px]', mb: 'mb-[5px]' },
+    ],
+    [
+      { h: 'h-[63px]', mb: 'mb-[43px]' },
+      { h: 'h-[37px]', mb: 'mb-[7px]' },
+    ],
+    [
+      { h: 'h-[30px]', mb: 'mb-[66px]' },
+      { h: 'h-[32px]', mb: 'mb-[12px]' },
+    ],
+  ];
+
+  const barGroup7 = [
+    { h: 'h-[25px]', mb: 'mb-[22px]' },
+    { h: 'h-[7px]', mb: 'mb-[41px]' },
+  ];
+
   return (
     <div className="flex items-end h-[288px]">
-      <div className="mb-[25px]">
-        <Bar height="h-[48px]" />
-      </div>
-      <div className="mb-[19px]">
-        <Bar height="h-[61px]" />
-      </div>
-      <div className="mb-[14px]">
-        <Bar height="h-[73px]" />
-      </div>
-      <div className="mb-[10px]">
-        <Bar height="h-[82px]" />
-      </div>
-      <div className="mb-[7px]">
-        <Bar height="h-[89px]" />
-      </div>
-      <div>
-        <div className="mb-[27px]">
-          <Bar height="h-[16px]" />
+      {barGroup1.map((bar, index) => (
+        <div className={bar.mb} key={`single-${index}`}>
+          <Bar height={bar.h} />
         </div>
-        <div className="mb-[5px]">
-          <Bar height="h-[94px]" />
+      ))}
+
+      {barGroup2.map((group, index) => (
+        <div key={`group-${index}`}>
+          <div className={`${group[0].mb}`}>
+            <Bar height={group[0].h} />
+          </div>
+          <div className={`${group[1].mb}`}>
+            <Bar height={group[1].h} />
+          </div>
         </div>
-      </div>
-      <div>
-        <div className="mb-[24px]">
-          <Bar height="h-[30px]" />
+      ))}
+
+      {barGroup3.map((group, index) => (
+        <div key={`group-${index}`}>
+          <div className={`${group[0].mb}`}>
+            <Bar height={group[0].h} />
+          </div>
+          <div className={`${group[1].mb}`}>
+            <Bar height={group[1].h} />
+          </div>
+          <div className={`${group[2].mb}`}>
+            <Bar height={group[2].h} />
+          </div>
         </div>
-        <div className="mb-[3px]">
-          <Bar height="h-[99px]" />
+      ))}
+
+      {barGroup4.map((group, index) => (
+        <div key={`group-${index}`}>
+          <div className={`${group[0].mb}`}>
+            <Bar height={group[0].h} />
+          </div>
+          <div className={`${group[1].mb}`}>
+            <Bar height={group[1].h} />
+          </div>
         </div>
-      </div>
-      <div>
-        <div className="mb-[22px]">
-          <Bar height="h-[40px]" />
+      ))}
+
+      {barGroup5.map((bar, index) => (
+        <div className={bar.mb} key={`single-${index}`}>
+          <Bar height={bar.h} />
         </div>
-        <div className="mb-[2px]">
-          <Bar height="h-[102px]" />
+      ))}
+
+      {barGroup6.map((group, index) => (
+        <div key={`group-${index}`}>
+          <div className={`${group[0].mb}`}>
+            <Bar height={group[0].h} />
+          </div>
+          <div className={`${group[1].mb}`}>
+            <Bar height={group[1].h} />
+          </div>
         </div>
-      </div>
-      <div>
-        <div className="mb-[20px]">
-          <Bar height="h-[47px]" />
+      ))}
+
+      {barGroup7.map((bar, index) => (
+        <div className={bar.mb} key={`single-${index}`}>
+          <Bar height={bar.h} />
         </div>
-        <div className="mb-[1px]">
-          <Bar height="h-[105px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[19px]">
-          <Bar height="h-[53px]" />
-        </div>
-        <Bar height="h-[107px]" />
-      </div>
-      <div>
-        <div className="mb-[17px]">
-          <Bar height="h-[59px]" />
-        </div>
-        <Bar height="h-[109px]" />
-      </div>
-      <div>
-        <div className="mb-[16px]">
-          <Bar height="h-[63px]" />
-        </div>
-        <Bar height="h-[110px]" />
-      </div>
-      <div>
-        <div className="mb-[15px]">
-          <Bar height="h-[66px]" />
-        </div>
-        <div className="mb-[1px]">
-          <Bar height="h-[110px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[14px]">
-          <Bar height="h-[69px]" />
-        </div>
-        <div className="mb-[1px]">
-          <Bar height="h-[111px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[13px]">
-          <Bar height="h-[72px]" />
-        </div>
-        <div className="mb-[2px]">
-          <Bar height="h-[111px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[12px]">
-          <Bar height="h-[74px]" />
-        </div>
-        <div className="mb-[13px]">
-          <Bar height="h-[43px]" />
-        </div>
-        <div className="mb-[3px]">
-          <Bar height="h-[55px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[12px]">
-          <Bar height="h-[76px]" />
-        </div>
-        <div className="mb-[23px]">
-          <Bar height="h-[39px]" />
-        </div>
-        <div className="mb-[3px]">
-          <Bar height="h-[49px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[12px]">
-          <Bar height="h-[77px]" />
-        </div>
-        <div className="mb-[29px]">
-          <Bar height="h-[36px]" />
-        </div>
-        <div className="mb-[5px]">
-          <Bar height="h-[44px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[25px]">
-          <Bar height="h-[64px]" />
-        </div>
-        <div className="mb-[33px]">
-          <Bar height="h-[34px]" />
-        </div>
-        <div className="mb-[7px]">
-          <Bar height="h-[41px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[35px]">
-          <Bar height="h-[56px]" />
-        </div>
-        <div className="mb-[34px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[9px]">
-          <Bar height="h-[39px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[39px]">
-          <Bar height="h-[52px]" />
-        </div>
-        <div className="mb-[34px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[11px]">
-          <Bar height="h-[38px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[41px]">
-          <Bar height="h-[50px]" />
-        </div>
-        <div className="mb-[33px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[13px]">
-          <Bar height="h-[38px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[42px]">
-          <Bar height="h-[49px]" />
-        </div>
-        <div className="mb-[32px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[15px]">
-          <Bar height="h-[38px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[43px]">
-          <Bar height="h-[48px]" />
-        </div>
-        <div className="mb-[30px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[18px]">
-          <Bar height="h-[38px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[42px]">
-          <Bar height="h-[48px]" />
-        </div>
-        <div className="mb-[27px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[23px]">
-          <Bar height="h-[37px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[40px]">
-          <Bar height="h-[48px]" />
-        </div>
-        <div className="mb-[19px]">
-          <Bar height="h-[33px]" />
-        </div>
-        <div className="mb-[28px]">
-          <Bar height="h-[42px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[37px]">
-          <Bar height="h-[49px]" />
-        </div>
-        <div className="mb-[34px]">
-          <Bar height="h-[91px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[31px]">
-          <Bar height="h-[51px]" />
-        </div>
-        <div className="mb-[23px]">
-          <Bar height="h-[106px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[17px]">
-          <Bar height="h-[57px]" />
-        </div>
-        <div className="mb-[14px]">
-          <Bar height="h-[123px]" />
-        </div>
-      </div>
-      <div className="mb-[10px]">
-        <Bar height="h-[200px]" />
-      </div>
-      <div className="mb-[7px]">
-        <Bar height="h-[203px]" />
-      </div>
-      <div className="mb-[4px]">
-        <Bar height="h-[206px]" />
-      </div>
-      <div className="mb-[3px]">
-        <Bar height="h-[206px]" />
-      </div>
-      <div className="mb-[1px]">
-        <Bar height="h-[207px]" />
-      </div>
-      <Bar height="h-[207px]" />
-      <Bar height="h-[206px]" />
-      <Bar height="h-[204px]" />
-      <div className="mb-[1px]">
-        <Bar height="h-[200px]" />
-      </div>
-      <div className="mb-[1px]">
-        <Bar height="h-[197px]" />
-      </div>
-      <div className="mb-[2px]">
-        <Bar height="h-[193px]" />
-      </div>
-      <div className="mb-[3px]">
-        <Bar height="h-[188px]" />
-      </div>
-      <div>
-        <div className="mb-[21px]">
-          <Bar height="h-[110px]" />
-        </div>
-        <div className="mb-[4px]">
-          <Bar height="h-[51px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[50px]">
-          <Bar height="h-[76px]" />
-        </div>
-        <div className="mb-[5px]">
-          <Bar height="h-[47px]" />
-        </div>
-      </div>
-      <div>
-        <div className="mb-[77px]">
-          <Bar height="h-[36px]" />
-        </div>
-        <div className="mb-[6px]">
-          <Bar height="h-[46px]" />
-        </div>
-      </div>
-      <div className="mb-[16px]">
-        <Bar height="h-[38px]" />
-      </div>
-      <div className="mb-[26px]">
-        <Bar height="h-[30px]" />
-      </div>
-      <div className="mb-[50px]">
-        <Bar height="h-[7px]" />
-      </div>
+      ))}
     </div>
   );
 }
