@@ -7,6 +7,7 @@ export default {
   theme: {
     colors: {
       'background': '#1E1E1E',
+      'slider-background': '#D9D9D9',
     },
     extend: {},
   },
