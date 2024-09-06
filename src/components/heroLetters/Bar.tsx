@@ -27,6 +27,8 @@ export default function Bar({
 
   const [moveDistance] = useState(getRandomNumber(35, 75));
 
+  const scale = 0.4;
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (barRef.current) {
@@ -45,15 +47,15 @@ export default function Bar({
         // Use the minimum distance between X and Y
         const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
 
-        const maxDistance = 150; // Max distance for effect to apply
-        const threshold = 50; // Minimum distance for movement to start
+        const maxDistance = 130; // Max distance for effect to apply //TODO: 150 on larger screens, 130ish on smaller screens
+        const threshold = 40; // Minimum distance for movement to start //TODO: 50 on larger screens, 40ish on smaller screens
         const intensity = Math.max(
           0,
           (maxDistance - distance) / (maxDistance - threshold)
         );
 
         // Adjust sensitivity factor
-        const sensitivityFactor = 2; // Decrease to reduce sensitivity
+        const sensitivityFactor = 2 * scale; // Decrease to reduce sensitivity
         const translateY = intensity * moveDistance * sensitivityFactor;
 
         setTransform(`translateY(${translateY}px)`);
@@ -88,7 +90,7 @@ export default function Bar({
   return (
     <div
       ref={barRef}
-      className={`bg-slider-background ${height} w-[4px] mr-[1px] rounded-md`}
+      className={`bg-slider-background ${height} w-[1.5px] mr-[0.5px] rounded-md`}
       style={{
         transform,
         transition: 'transform 0.1s',
