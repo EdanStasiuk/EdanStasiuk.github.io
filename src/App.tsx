@@ -29,7 +29,7 @@ function App() {
   useEffect(() => {
     const pixelRatio = window.devicePixelRatio;
 
-    const lowPixelRatioThreshold = 2;
+    const lowPixelRatioThreshold = 3;
 
     if (pixelRatio < lowPixelRatioThreshold) {
       setIsLowPixelRatio(true);
