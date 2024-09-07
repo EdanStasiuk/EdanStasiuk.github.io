@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getRandomNumber } from '../../functions';
 
-interface BarProps {
+interface Props {
   height: string;
 }
 
@@ -20,12 +20,14 @@ interface BarProps {
  */
 export default function Bar({
   height,
-}: React.PropsWithChildren<BarProps>): JSX.Element {
+}: React.PropsWithChildren<Props>): JSX.Element {
   const [transform, setTransform] = useState('translateY(0)');
   const barRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const [moveDistance] = useState(getRandomNumber(35, 75));
+
+  const scale = 0.4;
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -45,15 +47,15 @@ export default function Bar({
         // Use the minimum distance between X and Y
         const distance = Math.sqrt(distanceX ** 2 + distanceY ** 2);
 
-        const maxDistance = 150; // Max distance for effect to apply
-        const threshold = 50; // Minimum distance for movement to start
+        const maxDistance = 130; // Max distance for effect to apply //TODO: 150 on larger screens, 130ish on smaller screens
+        const threshold = 40; // Minimum distance for movement to start //TODO: 50 on larger screens, 40ish on smaller screens
         const intensity = Math.max(
           0,
           (maxDistance - distance) / (maxDistance - threshold)
         );
 
         // Adjust sensitivity factor
-        const sensitivityFactor = 2; // Decrease to reduce sensitivity
+        const sensitivityFactor = 2 * scale; // Decrease to reduce sensitivity
         const translateY = intensity * moveDistance * sensitivityFactor;
 
         setTransform(`translateY(${translateY}px)`);
@@ -88,7 +90,7 @@ export default function Bar({
   return (
     <div
       ref={barRef}
-      className={`bg-slider-background ${height} w-[4px] mr-[1px] rounded-md`}
+      className={`bg-white ${height} w-[1px] mr-[1px] rounded-md`}
       style={{
         transform,
         transition: 'transform 0.1s',
