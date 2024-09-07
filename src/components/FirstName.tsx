@@ -1,15 +1,15 @@
 interface Props {
   browserWidth: number;
-  browserWidthTheshold: number;
+  browserWidthThreshold: number;
 }
 
 export default function FirstName({
   browserWidth,
-  browserWidthTheshold,
+  browserWidthThreshold,
 }: React.PropsWithChildren<Props>) {
   return (
     <div
-      className={`${browserWidth >= browserWidthTheshold ? 'text-[96px] top-28' : 'text-[96px] top-32'} roboto-flex-italic text-header relative`}
+      className={`${browserWidth >= browserWidthThreshold ? 'text-[120px] -mb-24' : 'text-[110px] -mb-20'} roboto-flex-italic text-subHero`}
     >
       Edan
     </div>
