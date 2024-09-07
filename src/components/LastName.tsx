@@ -1,15 +1,16 @@
 interface Props {
   browserWidth: number;
-  browserWidthTheshold: number;
+  browserWidthThreshold: number;
 }
 
 export default function LastName({
   browserWidth,
-  browserWidthTheshold,
+  browserWidthThreshold,
 }: React.PropsWithChildren<Props>) {
   return (
     <div
-      className={`${browserWidth >= browserWidthTheshold ? 'text-[96px] top-10' : 'text-[96px] top-16'} roboto-flex-italic text-header relative`}
+      className={`${browserWidth >= browserWidthThreshold ? "text-[120px]" : "text-[110px] -mb-12"}
+          roboto-flex-italic text-subHero`}
     >
       Stasiuk
     </div>
