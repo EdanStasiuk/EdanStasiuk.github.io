@@ -7,9 +7,10 @@ import { FiMail } from 'react-icons/fi';
 import FirstNameBars from './components/FirstNameBars';
 import LastNameBars from './components/LastNameBars';
 import AboutMe from './components/AboutMe';
+import TechStack from './components/TechStack';
 
 function App() {
-  const [isLowPixelRatio, setIsLowPixelRatio] = useState(false);
+  const [isLowPixelRatio] = useState(true);
   const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth);
 
   const browserWidthThreshold = 1024;
@@ -26,15 +27,15 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const pixelRatio = window.devicePixelRatio;
+  // useEffect(() => {
+  //   const pixelRatio = window.devicePixelRatio;
 
-    const lowPixelRatioThreshold = 2;
+  //   const lowPixelRatioThreshold = 2;
 
-    if (pixelRatio < lowPixelRatioThreshold) {
-      setIsLowPixelRatio(true);
-    }
-  }, []);
+  //   if (pixelRatio < lowPixelRatioThreshold) {
+  //     setIsLowPixelRatio(true);
+  //   }
+  // }, []);
 
   return (
     <div className="px-[10%] pt-[150px]">
@@ -121,6 +122,8 @@ function App() {
         } mb-12`}
       >
         <AboutMe />
+        <div className='mb-8'/>
+        <TechStack />
       </div>
     </div>
   );
