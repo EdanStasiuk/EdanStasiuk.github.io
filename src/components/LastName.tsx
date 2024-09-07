@@ -1,17 +1,17 @@
-import E from './heroLetters/firstName/E';
-import LowerA from './heroLetters/firstName/LowerA';
-import LowerN from './heroLetters/firstName/LowerN';
+interface Props {
+  browserWidth: number;
+  browserWidthTheshold: number;
+}
 
-export default function LastName() {
+export default function LastName({
+  browserWidth,
+  browserWidthTheshold,
+}: React.PropsWithChildren<Props>) {
   return (
-    <div className="flex">
-      <E />
-      <LowerN />
-      <LowerA />
-      <LowerN />
-      <LowerN />
-      <LowerN />
-      <LowerN />
+    <div
+      className={`${browserWidth >= browserWidthTheshold ? 'text-[96px] top-10' : 'text-[96px] top-16'} roboto-flex-italic text-header relative`}
+    >
+      Stasiuk
     </div>
   );
 }

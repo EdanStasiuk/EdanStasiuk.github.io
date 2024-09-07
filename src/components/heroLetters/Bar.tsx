@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getRandomNumber } from '../../functions';
 
-interface BarProps {
+interface Props {
   height: string;
 }
 
@@ -20,7 +20,7 @@ interface BarProps {
  */
 export default function Bar({
   height,
-}: React.PropsWithChildren<BarProps>): JSX.Element {
+}: React.PropsWithChildren<Props>): JSX.Element {
   const [transform, setTransform] = useState('translateY(0)');
   const barRef = useRef<HTMLDivElement>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -90,7 +90,7 @@ export default function Bar({
   return (
     <div
       ref={barRef}
-      className={`bg-slider-background ${height} w-[1.5px] mr-[0.5px] rounded-md`}
+      className={`bg-white ${height} w-[1px] mr-[1px] rounded-md`}
       style={{
         transform,
         transition: 'transform 0.1s',

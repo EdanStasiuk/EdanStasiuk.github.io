@@ -1,16 +1,17 @@
-import E from './heroLetters/firstName/E';
-import LowerA from './heroLetters/firstName/LowerA';
-import LowerD from './heroLetters/firstName/LowerD';
-import LowerN from './heroLetters/firstName/LowerN';
+interface Props {
+  browserWidth: number;
+  browserWidthTheshold: number;
+}
 
-export default function FirstName() {
+export default function FirstName({
+  browserWidth,
+  browserWidthTheshold,
+}: React.PropsWithChildren<Props>) {
   return (
-    <div className="flex">
-      <E />
-      <LowerD />
-      <LowerA />
-      <div className="mr-4" />
-      <LowerN />
+    <div
+      className={`${browserWidth >= browserWidthTheshold ? 'text-[96px] top-28' : 'text-[96px] top-32'} roboto-flex-italic text-header relative`}
+    >
+      Edan
     </div>
   );
 }

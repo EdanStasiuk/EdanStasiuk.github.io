@@ -11,7 +11,8 @@ export default {
     },
     colors: {
       'background': '#1E1E1E',
-      'slider-background': '#D9D9D9',
+      'white': '#FFFFFF',
+      'header': '#CECECE',
     },
     extend: {},
   },
