@@ -12,7 +12,7 @@ export default {
     colors: {
       'background': '#1E1E1E',
       'white': '#FFFFFF',
-      'header': '#CECECE',
+      'subHero': '#CECECE',
     },
     extend: {},
   },
