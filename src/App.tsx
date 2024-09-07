@@ -46,7 +46,6 @@ function App() {
           {browserWidth >= browserWidthTheshold ? (
             <>
               <div>
-                {/* Conditionally render Edan and Stasiuk based on pixel ratio */}
                 {isLowPixelRatio ? (
                   <FirstName
                     browserWidth={browserWidth}
