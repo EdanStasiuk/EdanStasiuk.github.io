@@ -43,7 +43,7 @@ function App() {
   return (
     <div>
       <Navbar />
-      <div className={`px-[10%] ${browserWidth >= browserWidthThreshold ? "pt-[150px]" : "pt-[50px]"}`}>
+      <div id="top" className={`px-[10%] ${browserWidth >= browserWidthThreshold ? "pt-[150px]" : "pt-[50px]"}`}>
         <div className="flex flex-col items-center lg:flex-row lg:justify-center lg:whitespace-nowrap">
           <div
             className={`${

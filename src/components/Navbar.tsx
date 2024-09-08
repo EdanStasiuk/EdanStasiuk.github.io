@@ -48,6 +48,15 @@ export default function Navbar() {
         <nav className="flex font-robotoFlex font-thin text-[clamp(14px,2vw,24px)] w-full justify-between">
           <div className="flex justify-center px-2">
             <a
+              href="#top"
+              className="hover:text-[#DF9CFF]"
+              onClick={(e) => scrollToSection(e, 'top')}
+            >
+              Socials
+            </a>
+          </div>
+          <div className="flex justify-center px-2">
+            <a
               href="#about"
               className="hover:text-[#DF9CFF]"
               onClick={(e) => scrollToSection(e, 'about')}
@@ -62,15 +71,6 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, 'stack-projects')}
             >
               Stack & Projects
-            </a>
-          </div>
-          <div className="flexlex justify-center px-2">
-            <a
-              href="#resume"
-              className="hover:text-[#DF9CFF]"
-              onClick={(e) => scrollToSection(e, 'resume')}
-            >
-              Resume
             </a>
           </div>
           <div className="flex justify-center px-2">
