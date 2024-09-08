@@ -7,12 +7,12 @@ export default {
   theme: {
     fontFamily: {
       robotoFlex: ["Roboto Flex", "sans-serif"],
-      robotoFlexItalic: ["roboto-flex-italic", "sans-serif"],
     },
     colors: {
       'background': '#1E1E1E',
       'white': '#FFFFFF',
       'subHero': '#CECECE',
+      'formBorderColor': '#D9D9D9',
     },
     extend: {},
   },
