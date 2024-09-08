@@ -11,7 +11,7 @@ export default function Projects() {
             The AI navigates through waypoints while optimizing its path using sensor inputs and rewards for alignment and efficiency. This project explores the application of evolutionary algorithms to complex navigation tasks.
             
             Waypoint navigation was achieved in ~13 generations.`}
-        projectImageUrl="N/A"
+        projectImageUrl="/ai-jet-simulation.png"
         githubUrl="https://github.com/EdanStasiuk/NEAT-Jet-Simulation"
       />
       <Project
@@ -19,7 +19,7 @@ export default function Projects() {
         projectDescription={`A cryptocurrency wallet desktop and web GUI for the Hedera Hashgraph network, designed and developed using Figma, React with TypeScript, Vite, Tailwind CSS, Electron, Jest, and ESLint. 
             
             Keeping with the ethos of crypto, all of the code is open source and users' keys are solely stored locally within their browser using AES-256-GCM encryption.`}
-        projectImageUrl="N/A"
+        projectImageUrl="/hash-vault.png"
         githubUrl="https://github.com/EdanStasiuk/Hash-Vault"
       />
     </div>
