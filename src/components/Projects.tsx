@@ -2,7 +2,7 @@ import Project from './Project';
 
 export default function Projects() {
   return (
-    <div className="text-white roboto-flex-italic">
+    <div className="text-white roboto-flex-italic-800">
       <div className="text-[38px] mb-2">Projects</div>
       <Project
         projectName="AI-Piloted Jet Simulation"

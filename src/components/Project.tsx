@@ -24,12 +24,12 @@ export default function Project({
   return (
     <div className="text-white rounded-lg">
       <div
-        className="flex items-end mb-4 roboto-flex-italic font-semibold w-[65%] cursor-pointer pb-1"
+        className="flex items-end mb-4 roboto-flex-italic-700 font-semibold w-[65%] cursor-pointer pb-1"
         onClick={handleToggle}
         style={{
             borderBottom: '1px solid transparent',
             borderImage:
-              'linear-gradient(to right, #1E1E1E 0%, #CBECFF 20%, #CBECFF 80%, #343431 90%, #1E1E1E 100%) 1',
+              'linear-gradient(to right, #1E1E1E 0%, #DF9CFF 20%, #DF9CFF 80%, #343431 90%, #1E1E1E 100%) 1',
           }}
           
       >

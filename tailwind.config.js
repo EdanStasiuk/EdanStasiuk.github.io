@@ -7,7 +7,6 @@ export default {
   theme: {
     fontFamily: {
       robotoFlex: ["Roboto Flex", "sans-serif"],
-      robotoFlexItalic: ["roboto-flex-italic", "sans-serif"],
     },
     colors: {
       'background': '#1E1E1E',

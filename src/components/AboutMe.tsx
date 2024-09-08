@@ -1,6 +1,6 @@
 export default function AboutMe() {
     return (
-      <div className="text-white roboto-flex-italic">
+      <div id="about" className="text-white roboto-flex-italic-800">
         <div className="text-[38px] mb-2">
             About Me
         </div>

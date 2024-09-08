@@ -21,8 +21,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="text-white">
-      <div className="text-[38px] mb-2 roboto-flex-italic">Contact</div>
+    <div id='contact' className="text-white">
+      <div className="text-[38px] mb-2 roboto-flex-italic-800">Contact</div>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 font-robotoFlex font-light text-[18px]"
