@@ -13,6 +13,7 @@ export default {
       'background': '#1E1E1E',
       'white': '#FFFFFF',
       'subHero': '#CECECE',
+      'formBorderColor': '#D9D9D9',
     },
     extend: {},
   },
