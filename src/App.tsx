@@ -8,6 +8,7 @@ import FirstNameBars from './components/FirstNameBars';
 import LastNameBars from './components/LastNameBars';
 import AboutMe from './components/AboutMe';
 import TechStack from './components/TechStack';
+import Projects from './components/Projects';
 
 function App() {
   const [isLowPixelRatio] = useState(true);
@@ -124,6 +125,8 @@ function App() {
         <AboutMe />
         <div className='mb-8'/>
         <TechStack />
+        <div className='mb-8'/>
+        <Projects />
       </div>
     </div>
   );
