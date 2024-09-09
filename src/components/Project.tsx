@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
-import Modal from './Modal'; // Import the Modal component
+import { BROWSER_WIDTH_THRESHOLD } from '../config/constants';
+import Modal from './Modal';
+import { useBrowserWidth } from '../config/contexts/useBrowserWidth';
 
 interface Props {
   projectName: string;
@@ -18,6 +20,7 @@ export default function Project({
 }: React.PropsWithChildren<Props>) {
   const [isVisible, setIsVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { browserWidth } = useBrowserWidth();
 
   const handleToggle = () => {
     setIsVisible(!isVisible);
@@ -34,7 +37,7 @@ export default function Project({
   return (
     <div className="text-white rounded-lg">
       <div
-        className="flex items-end mb-4 roboto-flex-italic-700 font-semibold w-[65%] cursor-pointer pb-1"
+        className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[65%]' : 'w-full'} flex items-end mb-4 roboto-flex-italic-700 font-semibold cursor-pointer pb-1`}
         onClick={handleToggle}
         style={{
           borderBottom: '1px solid transparent',
@@ -67,7 +70,7 @@ export default function Project({
         </span>
         <a href={githubUrl} target="_blank" rel="noopener noreferrer">
           <FaGithub
-            className="relative bottom-[5px] ml-3 scale-[110%] text-[#DF9CFF] cursor-pointer flex-shrink-0"
+            className="relative bottom-[5px] ml-[14px] scale-[110%] text-[#DF9CFF] cursor-pointer flex-shrink-0"
             style={{
               fontSize: 'clamp(22px, 4vw, 28px)',
             }}
@@ -76,11 +79,17 @@ export default function Project({
       </div>
 
       {isVisible && (
-        <div className="flex font-robotoFlex font-light">
-          <div className="text-[18px] w-[65%] whitespace-pre-line text-justify mb-6">
+        <div
+          className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'flex' : ''} font-robotoFlex font-light`}
+        >
+          <div
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[65%]' : 'w-full'} text-[18px] whitespace-pre-line text-justify mb-6`}
+          >
             {projectDescription}
           </div>
-          <div className="mb-4 ml-8 font-thin w-[35%]">
+          <div
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[35%] ml-8' : 'w-full'} mb-4 font-thin`}
+          >
             <img
               src={projectImageUrl}
               alt={projectName}

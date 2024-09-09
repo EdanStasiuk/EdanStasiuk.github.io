@@ -5,18 +5,17 @@ import { FaLinkedin } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import FirstNameBars from '../components/FirstNameBars';
 import LastNameBars from '../components/LastNameBars';
+import { BROWSER_WIDTH_THRESHOLD } from '../config/constants';
+import { useBrowserWidth } from '../config/contexts/useBrowserWidth';
 
 interface Props {
-  browserWidth: number;
-  browserWidthThreshold: number;
   isLowPixelRatio: boolean;
 }
 
 export default function Hero({
-  browserWidth,
-  browserWidthThreshold,
   isLowPixelRatio,
 }: React.PropsWithChildren<Props>) {
+  const { browserWidth } = useBrowserWidth();
   const handleMailClick = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -25,27 +24,13 @@ export default function Hero({
     <div className="flex flex-col items-center lg:flex-row lg:justify-center lg:whitespace-nowrap">
       <div
         className={`${
-          browserWidth >= browserWidthThreshold ? 'flex' : 'hidden'
+          browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'flex' : 'hidden'
         } ${isLowPixelRatio ? '' : 'scale-[90%]'} justify-center whitespace-nowrap lg:block`}
       >
         <div>
-          {isLowPixelRatio ? (
-            <FirstName
-              browserWidth={browserWidth}
-              browserWidthThreshold={browserWidthThreshold}
-            />
-          ) : (
-            <FirstNameBars />
-          )}
+          {isLowPixelRatio ? <FirstName /> : <FirstNameBars />}
           <div className="flex mt-8 items-end">
-            {isLowPixelRatio ? (
-              <LastName
-                browserWidth={browserWidth}
-                browserWidthThreshold={browserWidthThreshold}
-              />
-            ) : (
-              <LastNameBars />
-            )}
+            {isLowPixelRatio ? <LastName /> : <LastNameBars />}
             <div
               className={`ml-8 relative ${isLowPixelRatio ? 'bottom-8' : 'top-4'}`}
             >
@@ -82,21 +67,15 @@ export default function Hero({
 
       <div
         className={`${
-          browserWidth < browserWidthThreshold ? 'block' : 'hidden'
+          browserWidth < BROWSER_WIDTH_THRESHOLD ? 'block' : 'hidden'
         } flex flex-col items-center scale-[65%] lg:hidden`}
       >
         <div className="flex flex-col items-center whitespace-nowrap">
           {isLowPixelRatio ? (
             <>
-              <FirstName
-                browserWidth={browserWidth}
-                browserWidthThreshold={browserWidthThreshold}
-              />
+              <FirstName />
               <div className="mb-4" />
-              <LastName
-                browserWidth={browserWidth}
-                browserWidthThreshold={browserWidthThreshold}
-              />
+              <LastName />
             </>
           ) : (
             <>

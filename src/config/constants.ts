@@ -1,0 +1,1 @@
+export const BROWSER_WIDTH_THRESHOLD = 1024;
