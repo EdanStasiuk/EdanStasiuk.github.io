@@ -1,20 +1,18 @@
 export default function AboutMe() {
-    return (
-      <div id="about" className="text-white roboto-flex-italic-800">
-        <div className="text-[38px] mb-2">
-            About Me
-        </div>
-        <div className="font-robotoFlex font-light text-[22px]">
-            <p className="mb-4">
-                I’m a fourth-year Computing Science major at Simon Fraser University, with a concentration in AI.
-            </p>
-            <p className="mb-4">
-                I’m fascinated by the use of technology to create decentralized systems where privacy and freedom are prioritized. 
-            </p>
-            <p className="mb-4">
-                I’m excited about working on projects that push the envelope and figuring out how these technologies can make a real impact. Let’s see where this journey takes us.
-            </p>
-        </div>
+  return (
+    <div id="about" className="text-white roboto-flex-italic-800">
+      <div className="text-[38px] mb-2">About Me</div>
+      <div className="font-robotoFlex font-light text-[22px]">
+        <p className="mb-4">
+          I’m a fourth-year Computing Science major at Simon Fraser University,
+          concentrating in AI.
+        </p>
+        <p className="mb-4">
+          I’m passionate about autonomous systems and modern financial
+          technologies, with an affinity for decentralized and open-source
+          solutions.
+        </p>
       </div>
-    );
-  }
+    </div>
+  );
+}

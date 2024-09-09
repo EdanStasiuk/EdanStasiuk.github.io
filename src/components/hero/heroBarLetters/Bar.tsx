@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { getRandomNumber } from '../../functions';
+import { getRandomNumber } from '../../../Utils/functions';
 
 interface Props {
   height: string;
