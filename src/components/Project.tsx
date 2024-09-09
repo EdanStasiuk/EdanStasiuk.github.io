@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
+import { PiGlobeThin } from 'react-icons/pi';
 import { BROWSER_WIDTH_THRESHOLD } from '../config/constants';
-import Modal from './Modal';
 import { useBrowserWidth } from '../config/contexts/useBrowserWidth';
+import Modal from './Modal';
 
 interface Props {
   projectName: string;
   projectDescription: string;
   projectImageUrl: string;
   githubUrl: string;
+  websiteUrl?: string;
 }
 
 export default function Project({
@@ -17,6 +19,7 @@ export default function Project({
   projectDescription,
   projectImageUrl,
   githubUrl,
+  websiteUrl = undefined,
 }: React.PropsWithChildren<Props>) {
   const [isVisible, setIsVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,6 +78,16 @@ export default function Project({
               fontSize: 'clamp(22px, 4vw, 28px)',
             }}
           />
+        </a>
+        <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
+          {websiteUrl && (
+            <PiGlobeThin
+              className="relative bottom-[5px] ml-[12px] scale-[132%] text-[#D9D9D9] cursor-pointer flex-shrink-0"
+              style={{
+                fontSize: 'clamp(22px, 4vw, 28px)',
+              }}
+            />
+          )}
         </a>
       </div>
 

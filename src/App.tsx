@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import AboutMe from './components/AboutMe';
 import TechStack from './components/TechStack';
-import Projects from './components/Projects';
+import PersonalProjects from './components/PersonalProjects';
 import Contact from './components/Contact';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -52,7 +52,7 @@ function App() {
             <div className="mb-8" />
             <TechStack />
             <div className="mb-8" />
-            <Projects />
+            <PersonalProjects />
             <div className="mb-8" />
             <Contact />
           </div>
