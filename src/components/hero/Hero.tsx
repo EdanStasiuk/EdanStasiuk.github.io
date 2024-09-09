@@ -1,12 +1,12 @@
-import FirstName from '../components/FirstName';
-import LastName from '../components/LastName';
+import FirstName from './FirstName';
+import LastName from './LastName';
 import { FaGithub } from 'react-icons/fa6';
 import { FaLinkedin } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
-import FirstNameBars from '../components/FirstNameBars';
-import LastNameBars from '../components/LastNameBars';
-import { BROWSER_WIDTH_THRESHOLD } from '../config/constants';
-import { useBrowserWidth } from '../config/contexts/useBrowserWidth';
+import FirstNameBars from './FirstNameBars';
+import LastNameBars from './LastNameBars';
+import { BROWSER_WIDTH_THRESHOLD } from '../../Utils/constants';
+import { useBrowserWidth } from '../../Utils/contexts/useBrowserWidth';
 
 interface Props {
   isLowPixelRatio: boolean;

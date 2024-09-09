@@ -1,5 +1,5 @@
-import { BROWSER_WIDTH_THRESHOLD } from '../config/constants';
-import { useBrowserWidth } from '../config/contexts/useBrowserWidth';
+import { BROWSER_WIDTH_THRESHOLD } from '../../Utils/constants';
+import { useBrowserWidth } from '../../Utils/contexts/useBrowserWidth';
 
 export default function LastName() {
   const { browserWidth } = useBrowserWidth();

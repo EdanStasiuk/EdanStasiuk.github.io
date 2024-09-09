@@ -6,7 +6,7 @@ export default function PersonalProjects() {
       <div className="text-[38px] mb-2">Personal Projects</div>
       <Project
         projectName="AI-Piloted Jet Simulation"
-        projectDescription={`AI-piloted 3D jet simulation with C# and Unity using the NEAT (NeuroEvolution of Augmenting Topologies) algorithm.
+        projectDescription={`An AI-piloted 3D jet simulation with C# and Unity using the NEAT (NeuroEvolution of Augmenting Topologies) algorithm.
             
             The AI navigates through waypoints while optimizing its path using sensor inputs and rewards for alignment and efficiency. This project demonstrates the application of evolutionary algorithms to complex navigation tasks, achieving successful waypoint navigation in approximately 13 generations.`}
         projectImageUrl="/ai-jet-simulation.png"

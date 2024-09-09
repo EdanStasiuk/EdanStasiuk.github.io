@@ -4,9 +4,9 @@ import TechStack from './components/TechStack';
 import PersonalProjects from './components/PersonalProjects';
 import Contact from './components/Contact';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import { BROWSER_WIDTH_THRESHOLD } from './config/constants';
-import { BrowserWidthProvider } from './config/contexts/BrowserWidthContext';
+import Hero from './components/hero/Hero';
+import { BROWSER_WIDTH_THRESHOLD } from './Utils/constants';
+import { BrowserWidthProvider } from './Utils/contexts/BrowserWidthContext';
 
 function App() {
   const [isLowPixelRatio] = useState(true);

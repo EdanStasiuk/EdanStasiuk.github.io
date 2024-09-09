@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
 import { PiGlobeThin } from 'react-icons/pi';
-import { BROWSER_WIDTH_THRESHOLD } from '../config/constants';
-import { useBrowserWidth } from '../config/contexts/useBrowserWidth';
+import { BROWSER_WIDTH_THRESHOLD } from '../Utils/constants';
+import { useBrowserWidth } from '../Utils/contexts/useBrowserWidth';
 import Modal from './Modal';
 
 interface Props {
