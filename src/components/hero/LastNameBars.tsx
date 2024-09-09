@@ -1,8 +1,8 @@
-import E from './heroLetters/firstName/E';
-import LowerA from './heroLetters/firstName/LowerA';
-import LowerN from './heroLetters/firstName/LowerN';
+import E from './heroBarLetters/firstName/E';
+import LowerA from './heroBarLetters/firstName/LowerA';
+import LowerN from './heroBarLetters/firstName/LowerN';
 
-export default function LastName() {
+export default function LastNameBars() {
   return (
     <div className="flex">
       <E />

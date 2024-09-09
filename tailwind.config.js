@@ -10,6 +10,7 @@ export default {
     },
     colors: {
       'background': '#1E1E1E',
+      'secondary-background': '#232323',
       'white': '#FFFFFF',
       'subHero': '#CECECE',
       'formBorderColor': '#D9D9D9',
