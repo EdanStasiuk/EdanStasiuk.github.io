@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import AboutMe from './components/AboutMe';
 import TechStack from './components/TechStack';
 import PersonalProjects from './components/PersonalProjects';
-import Contact from './components/Contact';
 import Navbar from './components/Navbar';
 import Hero from './components/hero/Hero';
 import { BROWSER_WIDTH_THRESHOLD } from './Utils/constants';
@@ -54,7 +53,7 @@ function App() {
             <div className="mb-8" />
             <PersonalProjects />
             <div className="mb-8" />
-            <Contact />
+            {/* <Contact /> */}
           </div>
         </div>
       </div>

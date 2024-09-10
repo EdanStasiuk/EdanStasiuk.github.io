@@ -66,20 +66,20 @@ export default function Navbar() {
           </div>
           <div className="flex justify-center px-2">
             <a
-              href="#stack-projects"
+              href="#stack"
               className="hover:text-[#DF9CFF]"
-              onClick={(e) => scrollToSection(e, 'stack-projects')}
+              onClick={(e) => scrollToSection(e, 'stack')}
             >
-              Stack & Projects
+              Stack
             </a>
           </div>
           <div className="flex justify-center px-2">
             <a
-              href="#contact"
+              href="#projects"
               className="hover:text-[#DF9CFF]"
-              onClick={(e) => scrollToSection(e, 'contact')}
+              onClick={(e) => scrollToSection(e, 'projects')}
             >
-              Contact
+              Projects
             </a>
           </div>
         </nav>

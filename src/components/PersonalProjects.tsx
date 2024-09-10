@@ -2,7 +2,7 @@ import Project from './Project';
 
 export default function PersonalProjects() {
   return (
-    <div className="text-white roboto-flex-italic-800">
+    <div id="projects" className="text-white roboto-flex-italic-800">
       <div className="text-[38px] mb-2">Personal Projects</div>
       <Project
         projectName="AI-Piloted Jet Simulation"
