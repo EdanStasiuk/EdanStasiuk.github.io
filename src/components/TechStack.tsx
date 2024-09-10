@@ -22,7 +22,7 @@ export default function TechStack() {
         </div>
         <div className="mb-4">
           <h2 className="underline">Databases:</h2>
-          <p>NoSQL (MongoDB, Firebase), PostgreSQL</p>
+          <p>NoSQL (MongoDB, Firebase), PostgreSQL, SQLite</p>
         </div>
       </div>
     </div>
