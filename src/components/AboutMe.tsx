@@ -2,7 +2,7 @@ export default function AboutMe() {
   return (
     <div id="about" className="text-white roboto-flex-italic-800">
       <div className="text-[38px] mb-2">About Me</div>
-      <div className="font-robotoFlex font-light text-[22px]">
+      <div className="font-robotoFlex font-light text-[18px] sm:text-[20px] md:text-[22px]">
         <p className="mb-4">
           I’m a fourth-year Computing Science major at Simon Fraser University,
           concentrating in AI.

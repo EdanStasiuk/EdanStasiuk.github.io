@@ -4,7 +4,7 @@ export default function TechStack() {
       <div className="text-[38px] mb-2">
         Tech Stack
       </div>
-      <div className="font-robotoFlex font-light text-[22px]">
+      <div className="font-robotoFlex font-light text-[18px] sm:text-[20px] md:text-[22px]">
         <div className="mb-4">
           <h2 className="underline">Programming Languages:</h2>
           <p>
