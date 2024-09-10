@@ -1,7 +1,7 @@
 export default function TechStack() {
   return (
-    <div className="text-white roboto-flex-italic-800">
-      <div id="stack-projects" className="text-[38px] mb-2">
+    <div id="stack" className="text-white roboto-flex-italic-800">
+      <div className="text-[38px] mb-2">
         Tech Stack
       </div>
       <div className="font-robotoFlex font-light text-[22px]">

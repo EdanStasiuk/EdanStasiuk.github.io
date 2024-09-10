@@ -17,7 +17,8 @@ export default function Hero({
 }: React.PropsWithChildren<Props>) {
   const { browserWidth } = useBrowserWidth();
   const handleMailClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    const email = import.meta.env.VITE_EMAIL;
+    window.location.href = `mailto:${email}`;
   };
 
   return (
