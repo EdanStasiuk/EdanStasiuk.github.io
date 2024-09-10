@@ -16,7 +16,7 @@ export default function PersonalProjects() {
         projectName="Hash Vault"
         projectDescription={`A cryptocurrency wallet desktop and web GUI for the Hedera Hashgraph network, designed and developed using Figma, React with TypeScript, Vite, Tailwind CSS, Electron, and Jest. The wallet allows users to view their account balances, transaction history, and easily send and receive cryptocurrency, providing a comprehensive and secure interface for managing Hedera assets.
             
-            Keeping with the ethos of crypto, all of the code is open-source and users' private keys are encrypted with their password using AES-256-GCM encryption before being stored locally within their browser. This ensures that you and only you can use your private key.
+            Keeping with the ethos of crypto, all of the code is open-source and users' private keys are encrypted with their password using AES-256-GCM before being stored locally within their browser. This ensures that you and only you can use your private key.
             
             I started this project with the goal of providing a valuable tool for the Hedera community.`}
         projectImageUrl="/hash-vault.png"
@@ -24,7 +24,7 @@ export default function PersonalProjects() {
       />
       <Project
         projectName="Bytelink"
-        projectDescription={`An IP Grabber that captures and logs essential user information, including Date & Time, IP Address, Location, and ISP. Built using HTML/CSS, JavaScript, Jest, and integrated with Firebase's NoSQL Firestore database for secure and efficient data storage.`}
+        projectDescription={`An IP Grabber that captures and logs essential user information, including Date & Time, IP Address, Location, and ISP. Built using HTML/CSS, Bootstrap, JavaScript, Jest, and integrated with Firebase's REST API and a Firestore NoSQL database for secure and efficient data storage.`}
         projectImageUrl="/bytelink.png"
         githubUrl="https://github.com/EdanStasiuk/Bytelink"
         websiteUrl={'https://bytelink-ipg.web.app '}
