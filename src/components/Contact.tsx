@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { GoPersonFill } from 'react-icons/go';
 import { FiMail } from 'react-icons/fi';
@@ -16,8 +17,15 @@ export default function Contact() {
     formState: { errors },
   } = useForm<FormValues>();
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const response = await axios.post('http://localhost:3000/contact', data);
+      
+      console.log("Data: ", response.data);
+    } catch (error) {
+      
+      console.error('There was a problem with the axios operation:', error);
+    }
   };
 
   return (
