@@ -38,7 +38,7 @@ export default function Navbar() {
 
   return (
     <div
-      className="sticky top-0 py-3 text-white z-10 bg-background px-[10%] text-nowrap"
+      className="sticky top-0 py-3 text-white z-10 bg-tails-background px-[10%] text-nowrap"
       style={{
         borderBottom: '2px solid transparent',
         borderImage: `linear-gradient(to right, #343431 ${Math.max(0, colorStart)}%, #DF9CFF ${Math.max(0, colorEnd)}%, #343431 ${Math.min(100, colorEnd + 15)}%) 1`,

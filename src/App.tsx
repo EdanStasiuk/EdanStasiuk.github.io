@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/hero/Hero';
 import { BROWSER_WIDTH_THRESHOLD } from './Utils/constants';
 import { BrowserWidthProvider } from './Utils/contexts/BrowserWidthContext';
+import Footer from './components/Footer';
 
 function App() {
   const [isLowPixelRatio] = useState(true);
@@ -52,10 +53,11 @@ function App() {
             <TechStack />
             <div className="mb-8" />
             <PersonalProjects />
-            <div className="mb-8" />
+            <div className="mb-32" />
             {/* <Contact /> */}
           </div>
         </div>
+        <Footer />
       </div>
     </BrowserWidthProvider>
   );
