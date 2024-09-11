@@ -30,7 +30,7 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 140,
+        top: element.offsetTop - 105,
         behavior: 'smooth',
       });
     }
