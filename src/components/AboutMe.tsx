@@ -4,7 +4,7 @@ export default function AboutMe() {
       <div className="text-[38px] mb-2">About Me</div>
       <div className="font-robotoFlex font-light text-[18px] sm:text-[20px] md:text-[22px]">
         <p className="mb-4">
-          I’m a fourth-year Computing Science major at Simon Fraser University,
+          I’m a third-year Computing Science major at Simon Fraser University,
           concentrating in AI.
         </p>
         <p className="mb-4">
