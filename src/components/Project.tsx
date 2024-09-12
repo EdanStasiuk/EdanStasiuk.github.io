@@ -73,18 +73,18 @@ export default function Project({
         </span>
         <a href={githubUrl} target="_blank" rel="noopener noreferrer">
           <FaGithub
-            className="relative bottom-[5px] ml-[14px] scale-[110%] text-[#DF9CFF] cursor-pointer flex-shrink-0"
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[14px] scale-[111%] text-[#DF9CFF] cursor-pointer flex-shrink-0`}
             style={{
-              fontSize: 'clamp(22px, 4vw, 28px)',
+              fontSize: 'clamp(18px, 5vw, 28px)',
             }}
           />
         </a>
         <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
           {websiteUrl && (
             <PiGlobeThin
-              className="relative bottom-[5px] ml-[12px] scale-[132%] text-[#D9D9D9] cursor-pointer flex-shrink-0"
+              className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[12px] scale-[132%] text-[#D9D9D9] cursor-pointer flex-shrink-0`}
               style={{
-                fontSize: 'clamp(22px, 4vw, 28px)',
+                fontSize: 'clamp(18px, 5vw, 28px)',
               }}
             />
           )}
