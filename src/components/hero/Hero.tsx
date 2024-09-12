@@ -89,12 +89,12 @@ export default function Hero({
         </div>
         <div className="flex flex-col items-center mt-8">
           <div className="flex relative items-center mb-8">
-            <button onClick={() => window.open('https://github.com', '_blank')}>
+            <button onClick={() => window.open('https://github.com/EdanStasiuk', '_blank')}>
               <FaGithub className="scale-[500%] text-[#DF9CFF]" />
             </button>
             <button
               className="ml-[84px]"
-              onClick={() => window.open('https://linkedin.com', '_blank')}
+              onClick={() => window.open('https://linkedin.com/in/edan-stasiuk', '_blank')}
             >
               <FaLinkedin className="scale-[525%] text-[#7AAFCE]" />
             </button>
