@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useBrowserWidth } from '../Utils/contexts/useBrowserWidth';
+import { BROWSER_WIDTH_THRESHOLD } from '../Utils/constants';
 
 export default function Navbar() {
   const [scrollPos, setScrollPos] = useState(0);
+  const { browserWidth } = useBrowserWidth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +33,7 @@ export default function Navbar() {
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 105,
+        top: element.offsetTop - 115,
         behavior: 'smooth',
       });
     }
@@ -38,18 +41,18 @@ export default function Navbar() {
 
   return (
     <div
-      className="sticky top-0 py-3 text-white z-10 bg-tails-background px-[10%] text-nowrap"
+      className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? "px-[10%]" : ""} sticky top-0 py-4 text-white z-10 bg-tails-background text-nowrap`}
       style={{
         borderBottom: '2px solid transparent',
         borderImage: `linear-gradient(to right, #343431 ${Math.max(0, colorStart)}%, #DF9CFF ${Math.max(0, colorEnd)}%, #343431 ${Math.min(100, colorEnd + 15)}%) 1`,
       }}
     >
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <nav className="flex font-robotoFlex font-thin text-[clamp(14px,2vw,24px)] w-full justify-between">
+      <div className={`flex justify-between items-center`}>
+        <nav className="flex font-robotoFlex font-thin text-[clamp(18px,2vw,24px)] w-full justify-between">
           <div className="flex justify-center px-2">
             <a
               href="#top"
-              className="hover:text-[#DF9CFF]"
+              className="hover:text-[#DF9CFF] p-4 rounded"
               onClick={(e) => scrollToSection(e, 'top')}
             >
               Socials
@@ -58,7 +61,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#about"
-              className="hover:text-[#DF9CFF]"
+              className="hover:text-[#DF9CFF] p-4 rounded"
               onClick={(e) => scrollToSection(e, 'about')}
             >
               About Me
@@ -67,7 +70,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#stack"
-              className="hover:text-[#DF9CFF]"
+              className="hover:text-[#DF9CFF] p-4 rounded"
               onClick={(e) => scrollToSection(e, 'stack')}
             >
               Stack
@@ -76,7 +79,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#projects"
-              className="hover:text-[#DF9CFF]"
+              className="hover:text-[#DF9CFF] p-4 rounded"
               onClick={(e) => scrollToSection(e, 'projects')}
             >
               Projects
