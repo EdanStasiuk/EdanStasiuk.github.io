@@ -3,13 +3,15 @@ import { useBrowserWidth } from '../Utils/contexts/useBrowserWidth';
 import { BROWSER_WIDTH_THRESHOLD } from '../Utils/constants';
 
 export default function Navbar() {
-  const [scrollPos, setScrollPos] = useState(0);
+  const [scrollPos, setScrollPos] = useState(0.0001);
   const { browserWidth } = useBrowserWidth();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollPos(window.scrollY);
     };
+
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
 
