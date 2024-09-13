@@ -1,10 +1,10 @@
+import Header from "./Header"
+
 export default function TechStack() {
   return (
     <div id="stack" className="text-white roboto-flex-italic-800">
-      <div className="text-[38px] mb-2">
-        Tech Stack
-      </div>
-      <div className="font-robotoFlex font-light text-[18px] sm:text-[20px] md:text-[22px]">
+      <Header title={"Tech Stack"}/>
+      <div className="font-robotoFlex font-light text-[16px] sm:text-[19px] md:text-[22px]">
         <div className="mb-4">
           <h2 className="underline">Programming Languages:</h2>
           <p>

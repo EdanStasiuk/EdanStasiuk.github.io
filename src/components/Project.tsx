@@ -96,7 +96,7 @@ export default function Project({
           className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'flex' : ''} font-robotoFlex font-light`}
         >
           <div
-            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[65%]' : 'w-full'} text-[18px] whitespace-pre-line text-justify mb-6`}
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[65%]' : 'w-full'} text-[16px] sm:text-[19px] md:text-[22px] whitespace-pre-line text-justify mb-6`}
           >
             {projectDescription}
           </div>

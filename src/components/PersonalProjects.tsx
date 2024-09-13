@@ -1,9 +1,10 @@
+import Header from './Header';
 import Project from './Project';
 
 export default function PersonalProjects() {
   return (
     <div id="projects" className="text-white roboto-flex-italic-800">
-      <div className="text-[38px] mb-2">Personal Projects</div>
+      <Header title={"Personal Projects"}/>
       <Project
         projectName="AI-Piloted Jet Simulation"
         projectDescription={`An AI-piloted 3D jet simulation with C# and Unity using the NEAT (NeuroEvolution of Augmenting Topologies) algorithm.
