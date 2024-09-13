@@ -50,14 +50,14 @@ export default function Project({
       >
         {isVisible ? (
           <FaAngleDown
-            className="text-[30px] mb-[4px] ml-1 mr-3 flex-shrink-0"
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'mb-[2px] mr-3' : 'mr-2'} text-[30px] ml-1 flex-shrink-0`}
             style={{
               fontSize: 'clamp(18px, 5vw, 28px)',
             }}
           />
         ) : (
           <FaAngleUp
-            className="text-[30px] mb-[4px] ml-1 mr-3 flex-shrink-0"
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'mb-[2px] mr-3' : 'mr-2'} text-[30px] ml-1 flex-shrink-0`}
             style={{
               fontSize: 'clamp(18px, 5vw, 28px)',
             }}
