@@ -23,6 +23,8 @@ export default function Project({
 }: React.PropsWithChildren<Props>) {
   const [isVisible, setIsVisible] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isIconHovered, setIsIconHovered] = useState(false);
+  const [isDivHovered, setIsDivHovered] = useState(false);
   const { browserWidth } = useBrowserWidth();
 
   const handleToggle = () => {
@@ -37,6 +39,22 @@ export default function Project({
     setIsModalOpen(false);
   };
 
+  const handleIconMouseEnter = () => {
+    setIsIconHovered(true);
+  };
+
+  const handleIconMouseLeave = () => {
+    setIsIconHovered(false);
+  };
+
+  const handleDivMouseEnter = () => {
+    setIsDivHovered(true);
+  };
+
+  const handleDivMouseLeave = () => {
+    setIsDivHovered(false);
+  };
+
   return (
     <div className="text-white rounded-lg">
       <div
@@ -47,17 +65,23 @@ export default function Project({
           borderImage:
             'linear-gradient(to right, #1E1E1E 0%, #DF9CFF 20%, #DF9CFF 80%, #343431 90%, #1E1E1E 100%) 1',
         }}
+        onMouseEnter={handleDivMouseEnter}
+        onMouseLeave={handleDivMouseLeave}
       >
         {isVisible ? (
           <FaAngleDown
-            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'mb-[2px] mr-3' : 'mr-2'} text-[30px] ml-1 flex-shrink-0`}
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'mb-[2px] mr-3' : 'mr-2'} ${
+              !isIconHovered && isDivHovered && 'text-[#DC9CFF]'
+            } hover:text-[#DC9CFF] text-[30px] ml-1 flex-shrink-0`}
             style={{
               fontSize: 'clamp(18px, 5vw, 28px)',
             }}
           />
         ) : (
           <FaAngleUp
-            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'mb-[2px] mr-3' : 'mr-2'} text-[30px] ml-1 flex-shrink-0`}
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'mb-[2px] mr-3' : 'mr-2'} ${
+              !isIconHovered && isDivHovered && 'text-[#DC9CFF]'
+            } hover:text-[#DC9CFF] text-[30px] ml-1 flex-shrink-0`}
             style={{
               fontSize: 'clamp(18px, 5vw, 28px)',
             }}
@@ -71,18 +95,30 @@ export default function Project({
         >
           {projectName}
         </span>
-        <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={handleIconMouseEnter}
+          onMouseLeave={handleIconMouseLeave}
+        >
           <FaGithub
-            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[14px] scale-[111%] text-[#DF9CFF] cursor-pointer flex-shrink-0`}
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[14px] scale-[111%] hover:scale-[121%] transition-transform text-[#DF9CFF] cursor-pointer flex-shrink-0`}
             style={{
               fontSize: 'clamp(18px, 5vw, 28px)',
             }}
           />
         </a>
-        <a href={websiteUrl} target="_blank" rel="noopener noreferrer">
+        <a
+          href={websiteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onMouseEnter={handleIconMouseEnter}
+          onMouseLeave={handleIconMouseLeave}
+        >
           {websiteUrl && (
             <PiGlobeThin
-              className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[12px] scale-[132%] text-[#D9D9D9] cursor-pointer flex-shrink-0`}
+              className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[12px] scale-[132%] hover:scale-[142%] transition-transform text-[#D9D9D9] cursor-pointer flex-shrink-0`}
               style={{
                 fontSize: 'clamp(18px, 5vw, 28px)',
               }}
