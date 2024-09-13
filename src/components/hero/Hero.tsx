@@ -89,12 +89,18 @@ export default function Hero({
         </div>
         <div className="flex flex-col items-center">
           <div className="flex items-center">
-            <button onClick={() => window.open('https://github.com/EdanStasiuk', '_blank')}>
+            <button
+              onClick={() =>
+                window.open('https://github.com/EdanStasiuk', '_blank')
+              }
+            >
               <FaGithub className="text-[80px] text-[#DF9CFF] hover:scale-[108%] transition-transform" />
             </button>
             <button
               className="ml-7"
-              onClick={() => window.open('https://linkedin.com/in/edan-stasiuk', '_blank')}
+              onClick={() =>
+                window.open('https://linkedin.com/in/edan-stasiuk', '_blank')
+              }
             >
               <FaLinkedin className="text-[83px] text-[#7AAFCE] hover:scale-[108%] transition-transform" />
             </button>
