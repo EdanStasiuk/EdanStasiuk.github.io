@@ -5,7 +5,7 @@ import { BROWSER_WIDTH_THRESHOLD } from '../Utils/constants';
 export default function Navbar() {
   const [scrollPos, setScrollPos] = useState(0.0001);
   const [padding, setPadding] = useState('py-4');
-  const [fontSize, setFontSize] = useState('text-[clamp(16px,2vw,24px)]');
+  const [fontSize, setFontSize] = useState('text-[clamp(15px,2vw,24px)]');
   const { browserWidth } = useBrowserWidth();
 
   useEffect(() => {
@@ -18,8 +18,8 @@ export default function Navbar() {
 
       const newFontSize =
         window.scrollY > 75
-          ? 'text-[clamp(16px,2vw,20px)]'
-          : 'text-[clamp(16px,2vw,24px)]';
+          ? 'text-[clamp(15px,2vw,20px)]'
+          : 'text-[clamp(15px,2vw,24px)]';
       setFontSize(newFontSize);
     };
 
@@ -46,8 +46,11 @@ export default function Navbar() {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
+      const navbar = document.querySelector('div.sticky.top-0');
+      const navbarHeight = navbar ? navbar.clientHeight : 0;
+
       window.scrollTo({
-        top: element.offsetTop - 115,
+        top: element.offsetTop - navbarHeight - 10,
         behavior: 'smooth',
       });
     }
@@ -70,7 +73,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#top"
-              className="text-center hover:text-[#DF9CFF] p-4 rounded"
+              className={`text-center hover:text-[#DF9CFF] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'p-4' : 'p-3'} rounded`}
               onClick={(e) => scrollToSection(e, 'top')}
             >
               Socials
@@ -79,7 +82,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#about"
-              className="text-center hover:text-[#DF9CFF] p-4 rounded"
+              className={`text-center hover:text-[#DF9CFF] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'p-4' : 'p-3'} rounded`}
               onClick={(e) => scrollToSection(e, 'about')}
             >
               About Me
@@ -88,7 +91,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#stack"
-              className="text-center hover:text-[#DF9CFF] p-4 rounded"
+              className={`text-center hover:text-[#DF9CFF] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'p-4' : 'p-3'} rounded`}
               onClick={(e) => scrollToSection(e, 'stack')}
             >
               Stack
@@ -97,7 +100,7 @@ export default function Navbar() {
           <div className="flex justify-center px-2">
             <a
               href="#projects"
-              className="text-center hover:text-[#DF9CFF] p-4 rounded"
+              className={`text-center hover:text-[#DF9CFF] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'p-4' : 'p-3'} rounded`}
               onClick={(e) => scrollToSection(e, 'projects')}
             >
               Projects

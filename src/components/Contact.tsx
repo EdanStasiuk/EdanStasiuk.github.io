@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { GoPersonFill } from 'react-icons/go';
 import { FiMail } from 'react-icons/fi';
+import Header from './Header';
 
 interface FormValues {
   name: string;
@@ -30,7 +31,7 @@ export default function Contact() {
 
   return (
     <div id='contact' className="text-white">
-      <div className="text-[38px] mb-2 roboto-flex-italic-800">Contact</div>
+      <Header title={"Contact"} />
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 font-robotoFlex font-light text-[18px]"

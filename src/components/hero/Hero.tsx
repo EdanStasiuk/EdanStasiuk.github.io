@@ -35,16 +35,16 @@ export default function Hero({
             <div
               className={`ml-8 relative ${isLowPixelRatio ? 'bottom-8' : 'top-4'}`}
             >
-              <div className="flex relative left-6 mb-6">
+              <div className="flex">
                 <button
                   onClick={() =>
                     window.open('https://github.com/EdanStasiuk', '_blank')
                   }
                 >
-                  <FaGithub className="scale-[400%] text-[#DF9CFF]" />
+                  <FaGithub className="hover:scale-[108%] transition-transform text-[67px] text-[#DF9CFF]" />
                 </button>
                 <button
-                  className="ml-16"
+                  className="ml-5"
                   onClick={() =>
                     window.open(
                       'https://linkedin.com/in/edan-stasiuk',
@@ -52,10 +52,10 @@ export default function Hero({
                     )
                   }
                 >
-                  <FaLinkedin className="scale-[425%] text-[#7AAFCE]" />
+                  <FaLinkedin className="hover:scale-[108%] transition-transform text-[70px] text-[#7AAFCE]" />
                 </button>
-                <button className="ml-16" onClick={handleMailClick}>
-                  <FiMail className="scale-[375%] text-[#D9D9D9]" />
+                <button className="ml-5" onClick={handleMailClick}>
+                  <FiMail className="hover:scale-[108%] transition-transform text-[65px] text-[#D9D9D9]" />
                 </button>
               </div>
               <div className="text-[35px] mb-[1px] roboto-flex-italic-800 text-[#C1C1C1]">
@@ -85,21 +85,27 @@ export default function Hero({
               <LastNameBars />
             </>
           )}
-          <div className="mb-16" />
+          <div className="mb-14" />
         </div>
-        <div className="flex flex-col items-center mt-8">
-          <div className="flex relative items-center mb-8">
-            <button onClick={() => window.open('https://github.com/EdanStasiuk', '_blank')}>
-              <FaGithub className="scale-[500%] text-[#DF9CFF]" />
+        <div className="flex flex-col items-center">
+          <div className="flex items-center">
+            <button
+              onClick={() =>
+                window.open('https://github.com/EdanStasiuk', '_blank')
+              }
+            >
+              <FaGithub className="text-[80px] text-[#DF9CFF] hover:scale-[108%] transition-transform" />
             </button>
             <button
-              className="ml-[84px]"
-              onClick={() => window.open('https://linkedin.com/in/edan-stasiuk', '_blank')}
+              className="ml-7"
+              onClick={() =>
+                window.open('https://linkedin.com/in/edan-stasiuk', '_blank')
+              }
             >
-              <FaLinkedin className="scale-[525%] text-[#7AAFCE]" />
+              <FaLinkedin className="text-[83px] text-[#7AAFCE] hover:scale-[108%] transition-transform" />
             </button>
-            <button className="ml-[84px]" onClick={handleMailClick}>
-              <FiMail className="scale-[475%] text-[#D9D9D9]" />
+            <button className="ml-7" onClick={handleMailClick}>
+              <FiMail className="text-[78px] text-[#D9D9D9] hover:scale-[108%] transition-transform" />
             </button>
           </div>
           <div className="text-[45px] whitespace-nowrap roboto-flex-italic-800 text-[#C1C1C1]">
