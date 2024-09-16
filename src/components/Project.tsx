@@ -103,7 +103,7 @@ export default function Project({
           onMouseLeave={handleIconMouseLeave}
         >
           <FaGithub
-            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[14px] scale-[111%] hover:scale-[121%] transition-transform text-[#DF9CFF] cursor-pointer flex-shrink-0`}
+            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[2px]'} relative ml-[14px] scale-[111%] hover:scale-[121%] transition-transform text-[#DF9CFF] cursor-pointer flex-shrink-0`}
             style={{
               fontSize: 'clamp(18px, 5vw, 28px)',
             }}
@@ -118,7 +118,7 @@ export default function Project({
         >
           {websiteUrl && (
             <PiGlobeThin
-              className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[3px]'} relative ml-[12px] scale-[132%] hover:scale-[142%] transition-transform text-[#D9D9D9] cursor-pointer flex-shrink-0`}
+              className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'bottom-[5px]' : 'bottom-[2px]'} relative ml-[12px] scale-[132%] hover:scale-[142%] transition-transform text-[#D9D9D9] cursor-pointer flex-shrink-0`}
               style={{
                 fontSize: 'clamp(18px, 5vw, 28px)',
               }}
