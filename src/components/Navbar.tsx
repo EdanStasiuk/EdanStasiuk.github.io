@@ -3,14 +3,12 @@ import { useBrowserWidth } from '../Utils/contexts/useBrowserWidth';
 import { BROWSER_WIDTH_THRESHOLD } from '../Utils/constants';
 
 export default function Navbar() {
-  const [scrollPos, setScrollPos] = useState(0.0001);
   const [padding, setPadding] = useState('py-4');
   const [fontSize, setFontSize] = useState('text-[clamp(15px,2vw,24px)]');
   const { browserWidth } = useBrowserWidth();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollPos(window.scrollY);
 
       // Update padding based on scroll position
       const newPadding = window.scrollY > 75 ? '' : 'py-4';
@@ -32,13 +30,6 @@ export default function Navbar() {
     };
   }, []);
 
-  // Calculate the gradient position based on the scroll position
-  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-  const gradientPos = scrollPos / maxScroll;
-
-  const colorStart = gradientPos * 100 - 15;
-  const colorEnd = gradientPos * 100;
-
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     id: string
@@ -58,10 +49,8 @@ export default function Navbar() {
 
   return (
     <div
-      className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'px-[10%]' : ''} sticky top-0 ${padding} text-white z-10 bg-tails-background text-nowrap`}
+      className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD - 500 ? 'px-[10%]' : ''} sticky top-0 ${padding} text-white z-10 bg-tails-background border-[#343431] border-b-2 text-nowrap`}
       style={{
-        borderBottom: '2px solid transparent',
-        borderImage: `linear-gradient(to right, #343431 ${Math.max(0, colorStart)}%, #DF9CFF ${Math.max(0, colorEnd)}%, #343431 ${Math.min(100, colorEnd + 15)}%) 1`,
         transition: 'padding 0.4s ease',
       }}
     >
