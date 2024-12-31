@@ -2,17 +2,18 @@ import Header from './Header';
 
 export default function AboutMe() {
   return (
-    <div id="about" className="text-white roboto-flex-italic-800">
+    <div id="about" className='text-white roboto-flex-800'>
       <Header title="About Me" />
-      <div className="font-robotoFlex font-light text-[16px] sm:text-[19px] md:text-[22px]">
-        <p className="mb-4">
+      <div className='font-robotoFlex font-light text-[16px] sm:text-[19px] md:text-[22px]'>
+        <p className='mb-4'>
           I’m a third-year Computing Science major at Simon Fraser University,
           concentrating in AI.
         </p>
-        <p className="mb-4">
-          I’m passionate about autonomous systems and modern financial
-          technologies, with an affinity for decentralized and open-source
-          solutions.
+        <p className='mb-4'>
+          I aspire to develop autonomous systems and advance modern financial technologies, with a focus on decentralized and open-source solutions.
+        </p>
+        <p className='mb-4'>
+          When I’m not immersed in code or my studies, you can find me at the gym or playing piano.
         </p>
       </div>
     </div>
