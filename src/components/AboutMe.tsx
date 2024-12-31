@@ -6,7 +6,7 @@ export default function AboutMe() {
       <Header title="About Me" />
       <div className='font-robotoFlex font-light text-[16px] sm:text-[19px] md:text-[22px]'>
         <p className='mb-4'>
-          I’m a third-year Computing Science major at Simon Fraser University,
+          I’m a fourth-year Computing Science major at Simon Fraser University,
           concentrating in AI.
         </p>
         <p className='mb-4'>
