@@ -14,7 +14,7 @@ export default function TechStack() {
         </div>
         <div className="mb-4">
           <h2 className="underline">Frameworks & Libraries:</h2>
-          <p>React, NextJS, Flask, Express, Electron, Spring Boot, Bootstrap, Jest, Cypress</p>
+          <p>React, Next.js, Flask, Express, Electron, Spring Boot, Bootstrap, Jest, Cypress</p>
         </div>
         <div className="mb-4">
           <h2 className="underline">Tools & Platforms:</h2>
