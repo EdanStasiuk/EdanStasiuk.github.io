@@ -8,7 +8,7 @@ export default function TechStack() {
         <div className="mb-4">
           <h2 className="underline">Programming Languages:</h2>
           <p>
-            JavaScript, TypeScript, Python, C/C++, Java, C#, MATLAB, SQL,
+            JavaScript, TypeScript, Python, C, C++, Java, C#, MATLAB, SQL,
             HTML/CSS
           </p>
         </div>
