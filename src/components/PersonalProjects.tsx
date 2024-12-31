@@ -3,7 +3,7 @@ import Project from './Project';
 
 export default function PersonalProjects() {
   return (
-    <div id="projects" className="text-white roboto-flex-italic-800">
+    <div id="projects" className="text-white roboto-flex-800">
       <Header title={"Personal Projects"}/>
       <Project
         projectName="AI Jet Simulation"

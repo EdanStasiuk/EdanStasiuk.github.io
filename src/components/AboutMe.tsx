@@ -2,7 +2,7 @@ import Header from './Header';
 
 export default function AboutMe() {
   return (
-    <div id="about" className='text-white roboto-flex-italic-800'>
+    <div id="about" className='text-white roboto-flex-800'>
       <Header title="About Me" />
       <div className='font-robotoFlex font-light text-[16px] sm:text-[19px] md:text-[22px]'>
         <p className='mb-4'>

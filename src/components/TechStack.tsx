@@ -2,7 +2,7 @@ import Header from "./Header"
 
 export default function TechStack() {
   return (
-    <div id="stack" className="text-white roboto-flex-italic-800">
+    <div id="stack" className="text-white roboto-flex-800">
       <Header title={"Tech Stack"}/>
       <div className="font-robotoFlex font-light text-[16px] sm:text-[19px] md:text-[22px]">
         <div className="mb-4">
