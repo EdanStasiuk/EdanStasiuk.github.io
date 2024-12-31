@@ -10,7 +10,7 @@ export default function AboutMe() {
           concentrating in AI.
         </p>
         <p className='mb-4'>
-          I am passionate about developing autonomous systems and advancing modern financial technologies, with a particular focus on decentralized and open-source solutions.
+          I aspire to develop autonomous systems and advance modern financial technologies, with a focus on decentralized and open-source solutions.
         </p>
         <p className='mb-4'>
           When I’m not immersed in code or my studies, you can find me at the gym or playing piano.
