@@ -14,11 +14,11 @@ export default function TechStack() {
         </div>
         <div className="mb-4">
           <h2 className="underline">Frameworks & Libraries:</h2>
-          <p>React, Electron, Spring Boot, Bootstrap, Jest, Cypress</p>
+          <p>React, NextJS, Flask, Express, Electron, Spring Boot, Bootstrap, Jest, Cypress</p>
         </div>
         <div className="mb-4">
           <h2 className="underline">Tools & Platforms:</h2>
-          <p>Node.js, Git/GitHub, Docker, REST API, Express</p>
+          <p>Node.js, Git/GitHub, Docker, REST API</p>
         </div>
         <div className="mb-4">
           <h2 className="underline">Databases:</h2>
