@@ -3,7 +3,7 @@ import Project from './Project';
 
 export default function PersonalProjects() {
   return (
-    <div id="projects" className="text-white roboto-flex-italic-800">
+    <div id="projects" className="text-white roboto-flex-800">
       <Header title={"Personal Projects"}/>
       <Project
         projectName="AI Jet Simulation"
@@ -12,6 +12,7 @@ export default function PersonalProjects() {
             The AI navigates through waypoints while optimizing its path using sensor inputs and rewards for alignment and efficiency. This project demonstrates the application of evolutionary algorithms to complex navigation tasks, achieving successful waypoint navigation in approximately 13 generations.`}
         projectImageUrl="/ai-jet-simulation.png"
         githubUrl="https://github.com/EdanStasiuk/NEAT-Jet-Simulation"
+        websiteUrl={'https://edanstasiuk.github.io/NEAT-Jet-Simulation/'}
       />
       <Project
         projectName="Hash Vault"
@@ -28,7 +29,7 @@ export default function PersonalProjects() {
         projectDescription={`An IP Grabber that captures and logs essential user information, including Date & Time, IP Address, Location, and ISP. Built using HTML/CSS, Bootstrap, JavaScript, Jest, and integrated with Firebase's REST API and a Firestore NoSQL database for secure and efficient data storage.`}
         projectImageUrl="/bytelink.png"
         githubUrl="https://github.com/EdanStasiuk/Bytelink"
-        websiteUrl={'https://bytelink-ipg.web.app '}
+        websiteUrl={'https://bytelink-ipg.web.app'}
       />
     </div>
   );
