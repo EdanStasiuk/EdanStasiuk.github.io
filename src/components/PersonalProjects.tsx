@@ -16,11 +16,9 @@ export default function PersonalProjects() {
       />
       <Project
         projectName="Hash Vault"
-        projectDescription={`A cryptocurrency wallet desktop and web GUI for the Hedera Hashgraph network, designed and developed using Figma, React with TypeScript, Vite, Tailwind CSS, Electron, and Jest. The wallet allows users to view their account balances, transaction history, and easily send and receive cryptocurrency, providing a comprehensive and secure interface for managing Hedera assets.
+        projectDescription={`A client-side cryptocurrency wallet desktop and web GUI for the Hedera Hashgraph network, designed and developed using Figma, React with TypeScript, Vite, Tailwind CSS, Electron, and Jest. The wallet allows users to view their account balances, transaction history, and easily send and receive cryptocurrency, providing a comprehensive and secure interface for managing Hedera assets.
             
-            Keeping with the ethos of crypto, all of the code is open-source and users' private keys are encrypted with their password using AES-256-GCM before being stored locally within their browser. This ensures that you and only you can use your private key.
-            
-            I started this project with the goal of providing a valuable tool for the Hedera community.`}
+            Keeping with the ethos of crypto, all of the code is open-source and users' private keys are encrypted with their password using AES-256-GCM before being stored locally within their browser. This ensures that you and only you can use your private key.`}
         projectImageUrl="/hash-vault.png"
         githubUrl="https://github.com/EdanStasiuk/Hash-Vault"
       />
