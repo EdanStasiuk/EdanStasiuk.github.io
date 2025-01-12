@@ -11,7 +11,7 @@ export default function AcademicProjects() {
 
             I designed and implemented the frontend using Figma, Next.js, TypeScript, and Tailwind CSS, collaborating with teammates to ensure a seamless user interface for visualizing data.  
             
-            I also integrated Flask backend services, creating endpoints for data processing and enabling full-stack functionality.`}            
+            I also integrated the backend services with Flask, creating endpoints for data processing and enabling full-stack functionality.`}            
         projectImageUrl="/EMOTIC.png"
         githubUrl="https://github.com/EdanStasiuk/EMOTIC"
       />
