@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 import AcademicProjects from './components/AcademicProjects';
 
 function App() {
-  const [isLowPixelRatio] = useState(true);
+  const [isLowPixelRatio] = useState(false);
   const [browserWidth, setBrowserWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {

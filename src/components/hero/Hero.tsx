@@ -31,11 +31,11 @@ export default function Hero({
         <div>
           {isLowPixelRatio ? <FirstName /> : <FirstNameBars />}
           <div className="flex mt-8 items-end">
-            {isLowPixelRatio ? <LastName /> : <LastNameBars />}
+            {/* {isLowPixelRatio ? <LastName /> : <LastNameBars />} */}
             <div
               className={`ml-8 relative ${isLowPixelRatio ? 'bottom-8' : 'top-4'}`}
             >
-              <div className="flex">
+              {/* <div className="flex">
                 <button
                   onClick={() =>
                     window.open('https://github.com/EdanStasiuk', '_blank')
@@ -60,7 +60,7 @@ export default function Hero({
               </div>
               <div className="text-[35px] mb-[1px] roboto-flex-italic-800 text-[#C1C1C1]">
                 Software Engineer
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
