@@ -11,11 +11,12 @@ interface Bar {
   currentOffsetY: number;
 }
 
-const BAR_WIDTH = 1.2;
-const BAR_SPACING = 2;
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 300;
-const OFFSET_Y = 50;
+const BASE_BAR_WIDTH = 1.2;
+const BASE_BAR_SPACING = 2;
+const BASE_CANVAS_WIDTH = window.innerWidth;
+const BASE_CANVAS_HEIGHT = window.innerHeight * 0.7;
+const BASE_OFFSET_Y = 0.3 * BASE_CANVAS_HEIGHT;
+const BASE_OFFSET_X = 0.15 * BASE_CANVAS_WIDTH;
 const MAX_EFFECT_DISTANCE = 130;
 const THRESHOLD = 40;
 const SENSITIVITY = 0.8;
@@ -32,6 +33,19 @@ export default function ECanvas() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Calculate multipliers based on screen width
+    const screenWidth = window.innerWidth;
+    const widthMultiplier = screenWidth / BASE_CANVAS_WIDTH;
+    const heightMultiplier = widthMultiplier; // Maintain aspect ratio
+
+    // Scaled constants
+    const CANVAS_WIDTH = screenWidth;
+    const CANVAS_HEIGHT = BASE_CANVAS_HEIGHT * heightMultiplier;
+    const BAR_WIDTH = BASE_BAR_WIDTH * widthMultiplier;
+    const BAR_SPACING = BASE_BAR_SPACING * widthMultiplier;
+    const OFFSET_Y = BASE_OFFSET_Y * heightMultiplier;
+    const OFFSET_X = BASE_OFFSET_X * widthMultiplier;
+
     // Canvas dimensions
     const dpr = window.devicePixelRatio || 1;
     canvas.width = CANVAS_WIDTH * dpr;
@@ -43,7 +57,7 @@ export default function ECanvas() {
     const barData: { x: number; y: number; height: number }[] = [];
 
     // Left vertical line
-    let x = 0;
+    let x = OFFSET_X;
     for (const h of [
       3, 12, 23, 34, 45, 57, 68, 78, 89, 101, 108, 112, 113.5, 113.5, 113.5,
     ]) {
@@ -63,21 +77,21 @@ export default function ECanvas() {
       barData.push({ x, y, height: h });
       x += BAR_SPACING;
     }
-    x = 42;
-    const y = 176 - OFFSET_Y;
+    x = OFFSET_X + 42;
+    const y = CANVAS_HEIGHT - 124 - OFFSET_Y;
     for (let i = 0; i < 24; i++) {
       barData.push({ x, y, height: 22 });
       x += BAR_SPACING;
     }
-    for (const h of [19, 9, 3]) {
+    for (const h of [19, 11, 3]) {
       barData.push({ x, y, height: h });
       x += BAR_SPACING;
     }
 
     // Middle line
-    x = 38;
+    x = OFFSET_X + 38;
     for (let i = 0; i < 18; i++) {
-      const y = 220 - OFFSET_Y;
+      const y = CANVAS_HEIGHT - 80 - OFFSET_Y;
       barData.push({ x, y, height: 19 });
       x += BAR_SPACING;
     }
@@ -88,7 +102,7 @@ export default function ECanvas() {
     }
 
     // Bottom line
-    x = 30;
+    x = OFFSET_X + 30;
     for (let i = 0; i < 21; i++) {
       const h = 21.2;
       const y = CANVAS_HEIGHT - h - 10 - OFFSET_Y;
@@ -108,7 +122,7 @@ export default function ECanvas() {
       baseY: bar.y,
       height: bar.height,
       width: BAR_WIDTH,
-      moveDistance: 35 + Math.random() * 40,
+      moveDistance: (35 + Math.random() * 40) * heightMultiplier,
       direction: Math.random() < 0.5 ? 1 : -1,
       currentOffsetY: 0,
     }));
@@ -160,15 +174,21 @@ export default function ECanvas() {
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouse.current.x = e.clientX - rect.left;
-      mouse.current.y = e.clientY - rect.top;
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      mouse.current.x = x;
+      mouse.current.y = y;
+
+      mouseInsideCanvas.current =
+        x >= 0 && y >= 0 && x <= rect.width && y <= rect.height;
     };
 
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseenter', () => {
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseenter', () => {
       mouseInsideCanvas.current = true;
     });
-    canvas.addEventListener('mouseleave', () => {
+    window.addEventListener('mouseleave', () => {
       mouseInsideCanvas.current = false;
     });
 
@@ -178,5 +198,15 @@ export default function ECanvas() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        zIndex: -1,
+      }}
+    />
+  );
 }

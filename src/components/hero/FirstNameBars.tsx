@@ -9,8 +9,8 @@ export default function FirstNameBars() {
     <div className="flex">
       {/* <E /> */}
       <ECanvas />
-      <div className="-mr-2" />
-      {/* <LowerD />
+      {/* <div className="-mr-2" />
+      <LowerD />
       <div className="-mr-2" />
       <LowerA />
       <div className="mr-2" />
