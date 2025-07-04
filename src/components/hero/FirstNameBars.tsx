@@ -8,7 +8,7 @@ export default function FirstNameBars() {
   return (
     <div className="flex">
       {/* <E /> */}
-      <ECanvas />
+      {/* <ECanvas /> */}
       {/* <div className="-mr-2" />
       <LowerD />
       <div className="-mr-2" />
