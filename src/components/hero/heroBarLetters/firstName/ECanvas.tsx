@@ -15,7 +15,7 @@ const BASE_BAR_WIDTH = 1.2;
 const BASE_BAR_SPACING = 2;
 const BASE_CANVAS_WIDTH = window.innerWidth;
 const BASE_CANVAS_HEIGHT = window.innerHeight * 0.7;
-const BASE_OFFSET_Y = 0.3 * BASE_CANVAS_HEIGHT;
+const BASE_OFFSET_Y = 0.6 * BASE_CANVAS_HEIGHT;
 const BASE_OFFSET_X = 0.15 * BASE_CANVAS_WIDTH;
 const MAX_EFFECT_DISTANCE = 130;
 const THRESHOLD = 40;
@@ -132,6 +132,11 @@ export default function ECanvas() {
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+      // Create a vertical gradient that spans the entire canvas
+      const globalGradient = ctx.createLinearGradient(0, 0, 0, CANVAS_HEIGHT);
+      globalGradient.addColorStop(0, '#ff6ec4'); // Top of canvas
+      globalGradient.addColorStop(0.5, '#7873f5'); // Bottom of canvas
+
       for (const bar of bars.current) {
         const barLeft = bar.x;
         const barRight = bar.x + bar.width;
@@ -163,7 +168,7 @@ export default function ECanvas() {
 
         const y = bar.baseY + bar.currentOffsetY * bar.direction;
         ctx.beginPath();
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = globalGradient;
         ctx.fillRect(bar.x, y, bar.width, bar.height);
       }
 
@@ -207,7 +212,7 @@ export default function ECanvas() {
         left: 0,
         width: '100%',
         height: '100vh',
-        zIndex: -1,
+        zIndex: 0,
         pointerEvents: 'none',
       }}
     />

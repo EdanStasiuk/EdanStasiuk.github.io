@@ -9,6 +9,8 @@ import { BrowserWidthProvider } from './Utils/contexts/BrowserWidthContext';
 import Footer from './components/Footer';
 import AcademicProjects from './components/AcademicProjects';
 import ECanvas from './components/hero/heroBarLetters/firstName/ECanvas';
+import BarLetterCanvas from './components/hero/BarLetterCanvas';
+import { getEBars } from './components/hero/heroBarLetters/firstName/getEBars';
 
 function App() {
   const [isLowPixelRatio] = useState(false);
@@ -44,7 +46,8 @@ function App() {
           id="top"
           className={`relative overflow-x-hidden px-[10%] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'pt-[150px]' : 'pt-[50px]'}`}
         >
-          <ECanvas />
+          {/* <ECanvas /> */}
+          <BarLetterCanvas getBars={getEBars} />
           <Hero isLowPixelRatio={isLowPixelRatio} />
           <div
             className={`${

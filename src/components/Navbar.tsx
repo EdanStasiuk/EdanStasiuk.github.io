@@ -9,7 +9,6 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-
       // Update padding based on scroll position
       const newPadding = window.scrollY > 75 ? '' : 'py-4';
       setPadding(newPadding);
