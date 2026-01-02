@@ -29,7 +29,14 @@
 
 @layer base {
   body {
-    @apply bg-background
+    @apply bg-background overflow-x-hidden
+  }
+}
+
+@layer utilities {
+  .pixelated {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
   }
 }
 

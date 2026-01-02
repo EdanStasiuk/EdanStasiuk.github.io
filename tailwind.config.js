@@ -9,7 +9,7 @@ export default {
       robotoFlex: ["Roboto Flex", "sans-serif"],
     },
     colors: {
-      'background': '#1E1E1E',
+      'background': '#F3F5F4',
       'secondary-background': '#232323',
       'tails-background': '#1A1A1A',
       'tails-border': '#343431',
