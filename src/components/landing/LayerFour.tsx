@@ -14,7 +14,7 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
   const maxScroll = 300;
   const progress = Math.min(scrollY / maxScroll, 1);
   const moveX = progress * 1200;
-  const moveY = 800 * Math.pow(progress, 2);
+  const moveY = 900 * Math.pow(progress, 2);
 
   useEffect(() => {
     const updateLayout = () => {
