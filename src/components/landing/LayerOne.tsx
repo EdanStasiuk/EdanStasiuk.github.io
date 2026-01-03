@@ -8,12 +8,14 @@ const SPEED_RATIO = 175;
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
+  scrollY: number;
 };
 
-export default function LayerOne({ sceneRef }: Props) {
+export default function LayerOne({ sceneRef, scrollY }: Props) {
   const trainRef = useRef<HTMLImageElement>(null);
   const bridgeRef = useRef<HTMLImageElement>(null);
   const [bridgeFrame, setBridgeFrame] = useState(0);
+  const scrollMove = scrollY * 0.4;
 
   // mutable animation values
   const trainWidthRef = useRef(0);
@@ -95,7 +97,10 @@ export default function LayerOne({ sceneRef }: Props) {
 
 
   return (
-    <div className="absolute inset-0 pointer-events-none">
+    <div 
+      className="absolute inset-0 pointer-events-none z-30" 
+      style={{ transform: `translateY(${scrollMove}px)` }}
+    >
       <div className="bridge-container relative w-full h-full">
         <img
           ref={bridgeRef}

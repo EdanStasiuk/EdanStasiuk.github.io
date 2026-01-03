@@ -4,11 +4,13 @@ import backgroundBuildings1 from '../../assets/landing-pixel-assets/layer-2/2-ba
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
+  scrollY: number;
 };
 
-export default function LayerTwo({ sceneRef }: Props) {
+export default function LayerTwo({ sceneRef, scrollY }: Props) {
   const [frame, setFrame] = useState(0);
   const [width, setWidth] = useState(0);
+  const scrollMove = scrollY * 0.5;
 
   // flicker effect
   useEffect(() => {
@@ -35,7 +37,10 @@ export default function LayerTwo({ sceneRef }: Props) {
   }, [sceneRef]);
 
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none">
+    <div 
+      className="absolute inset-0 z-20 pointer-events-none"
+      style={{ transform: `translateY(${scrollMove}px)` }}
+    >
       <img
         src={frame === 0 ? backgroundBuildings0 : backgroundBuildings1}
         alt=""

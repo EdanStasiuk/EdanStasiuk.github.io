@@ -3,10 +3,12 @@ import branch from '../../assets/landing-pixel-assets/layer-0/branch.png';
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
+  scrollY: number;
 };
 
-export default function LayerZero({ sceneRef }: Props) {
+export default function LayerZero({ sceneRef, scrollY }: Props) {
   const [width, setWidth] = useState(0);
+  const translateX = scrollY * 1.5;
 
   useEffect(() => {
     const updateLayout = () => {
@@ -23,7 +25,10 @@ export default function LayerZero({ sceneRef }: Props) {
   }, [sceneRef]);
 
   return (
-    <div className="absolute inset-0 z-30 pointer-events-none">
+    <div 
+      style={{ transform: `translateX(${translateX}px)` }}
+      className="absolute inset-0 z-30 pointer-events-none"
+    >
       <img
         src={branch}
         alt=""

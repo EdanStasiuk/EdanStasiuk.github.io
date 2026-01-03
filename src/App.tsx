@@ -32,7 +32,7 @@ function App() {
         <LandingScene />
         <div
           id="top"
-          className={`px-[10%] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'pt-[150px]' : 'pt-[50px]'}`}
+          className={`relative px-[10%] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'pt-[150px]' : 'pt-[50px]'}`}
         >
           <div
             className={`${
