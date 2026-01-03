@@ -1,10 +1,22 @@
+import { useRef } from "react";
 import LayerOne from "./LayerOne";
+import LayerTwo from "./LayerTwo";
+import LayerThree from "./LayerThree";
+import LayerZero from "./LayerZero";
 
-const LandingScene = () => {
+export default function LandingScene() {
+  const sceneRef = useRef<HTMLDivElement>(null);
+
   return (
-      <div className="pt-60">
-          <LayerOne />
-      </div>
-  )
-}
-export default LandingScene;
+    <div
+    ref={sceneRef}
+    className="w-full h-full absolute bottom-0 left-0"
+    >
+        <LayerZero sceneRef={sceneRef} />
+        <LayerOne sceneRef={sceneRef} />
+        <LayerOne sceneRef={sceneRef} />
+        <LayerTwo sceneRef={sceneRef} />
+        <LayerThree sceneRef={sceneRef} />
+    </div>
+  );
+};
