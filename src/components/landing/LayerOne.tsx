@@ -4,7 +4,7 @@ import bridgeImg1 from '../../assets/landing-pixel-assets/layer-1/1-forefront-bu
 import trainImg from '../../assets/landing-pixel-assets/layer-1/1-train.png';
 
 const TRAIN_WIDTH_RATIO = 3.3;
-const SPEED_RATIO = 175;
+const ANIMATION_SPEED = 0.003; 
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
@@ -15,91 +15,66 @@ export default function LayerOne({ sceneRef, scrollY }: Props) {
   const trainRef = useRef<HTMLImageElement>(null);
   const bridgeRef = useRef<HTMLImageElement>(null);
   const [bridgeFrame, setBridgeFrame] = useState(0);
+  
+  const progressRef = useRef(1.2); 
+  const rafRef = useRef<number>();
   const scrollMove = scrollY * 0.4;
 
-  // mutable animation values
-  const trainWidthRef = useRef(0);
-  const trainYRef = useRef(0);
-  const xRef = useRef(0);
-  const speedRef = useRef(0);
-  const rafRef = useRef<number>();
-
-  const updateLayout = () => {
-    const train = trainRef.current;
-    const bridge = bridgeRef.current;
-    const scene = sceneRef.current;
-    if (!train || !bridge || !scene) return;
-  
-    const sceneWidth = scene.clientWidth;
-  
-    const width = sceneWidth / TRAIN_WIDTH_RATIO;
-    train.style.width = `${width}px`;
-    trainWidthRef.current = width;
-  
-    const bridgeHeight = bridge.offsetHeight;
-    const trainHeight = train.offsetHeight * 9.25;
-    trainYRef.current = bridgeHeight - trainHeight;
-  
-    speedRef.current = sceneWidth / SPEED_RATIO;
-  };
-
-  // flicker effect
   useEffect(() => {
-    let timeout: number;
-
-    const flicker = () => {
-      setBridgeFrame(prev => (prev === 0 ? 1 : 0));
-
-      timeout = setTimeout(flicker, 120 + Math.random() * 220);
-    };
-
-    flicker();
-
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // train layout on resize
-  useEffect(() => {
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-    return () => window.removeEventListener('resize', updateLayout);
-  }, []);
-
-  // train animation
-  useEffect(() => {
-    const train = trainRef.current;
-    const scene = sceneRef.current;
-    if (!train || !scene) return;
-  
-    xRef.current = scene.clientWidth;
-  
     const animate = () => {
-      xRef.current -= speedRef.current;
-  
-      if (xRef.current < -trainWidthRef.current) {
-        xRef.current = scene.clientWidth * 2;
+      const train = trainRef.current;
+      const bridge = bridgeRef.current;
+      const scene = sceneRef.current;
+
+      if (!train || !bridge || !scene) {
+        rafRef.current = requestAnimationFrame(animate);
+        return;
       }
-  
-      train.style.transform = `translate3d(
-        ${Math.round(xRef.current)}px,
-        ${Math.round(trainYRef.current)}px,
-        0
-      )`;
-  
+
+      const sceneRect = scene.getBoundingClientRect();
+      const bridgeRect = bridge.getBoundingClientRect();
+      const trainRect = train.getBoundingClientRect();
+
+      const sceneW = sceneRect.width;
+      const bridgeH = bridgeRect.height;
+      const trainH = trainRect.height;
+
+      progressRef.current -= ANIMATION_SPEED;
+      if (progressRef.current < -0.6) progressRef.current = 1.5;
+
+      const trainWidth = sceneW / TRAIN_WIDTH_RATIO;
+      const trainY = bridgeH - (trainH * 9.25);
+      const xPos = progressRef.current * sceneW;
+
+      train.style.width = `${trainWidth}px`;
+      train.style.transform = `translate3d(${xPos}px, ${trainY}px, 0)`;
+
       rafRef.current = requestAnimationFrame(animate);
     };
-  
+
     animate();
     return () => {
-      if (rafRef.current !== undefined) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [sceneRef]);
+  });
 
+  useEffect(() => {
+    let timeout: number;
+    const flicker = () => {
+      setBridgeFrame(prev => (prev === 0 ? 1 : 0));
+      timeout = setTimeout(flicker, 120 + Math.random() * 220);
+    };
+    flicker();
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <div 
       className="absolute inset-0 pointer-events-none z-30" 
-      style={{ transform: `translateY(${scrollMove}px)` }}
+      style={{ 
+        transform: `translateY(${scrollMove}px)`,
+        willChange: 'transform' 
+      }}
     >
       <div className="bridge-container relative w-full h-full">
         <img
@@ -108,13 +83,14 @@ export default function LayerOne({ sceneRef, scrollY }: Props) {
           alt=""
           className="scene-layer bridge-layer absolute left-0 bottom-0 z-20 w-full"
         />
-
         <img
           ref={trainRef}
           src={trainImg}
           alt=""
           className="scene-layer train-layer absolute left-0 z-10 bottom-0"
-          onLoad={updateLayout}
+          style={{
+            willChange: 'transform, width',
+          }}
         />
       </div>
     </div>
