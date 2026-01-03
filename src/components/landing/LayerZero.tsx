@@ -1,4 +1,5 @@
 import { RefObject, useEffect, useState } from 'react';
+import Bird from './Bird';
 import branch from '../../assets/landing-pixel-assets/layer-0/branch.png';
 
 type Props = {
@@ -14,8 +15,6 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
     const updateLayout = () => {
       const scene = sceneRef.current;
       if (!scene) return;
-
-      // scale branch width
       setWidth(scene.clientWidth / 1.9);
     };
 
@@ -24,20 +23,30 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
     return () => window.removeEventListener('resize', updateLayout);
   }, [sceneRef]);
 
+  const birdRightOffset = width * 0.51;
+  const birdBottomOffset = `calc(15vh + ${width * 0.27}px)`;
+
   return (
     <div 
       style={{ transform: `translateX(${translateX}px)` }}
       className="absolute inset-0 z-30 pointer-events-none"
     >
-      <img
-        src={branch}
-        alt=""
-        style={{
-          width: `${width}px`,
-          height: 'auto',
-        }}
-        className="absolute right-0 bottom-[15vh]"
-      />
+      <div className="relative w-full h-full">
+        <img
+          src={branch}
+          alt=""
+          style={{ 
+            width: `${width}px`, 
+            height: 'auto'
+          }}
+          className="absolute right-0 bottom-[15vh]"
+        />
+        <Bird 
+          width={width} 
+          bottomOffset={birdBottomOffset} 
+          rightOffset={`${birdRightOffset}px`} 
+        />
+      </div>
     </div>
   );
 }
