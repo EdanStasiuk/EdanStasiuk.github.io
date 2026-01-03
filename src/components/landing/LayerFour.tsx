@@ -11,12 +11,10 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
   const [frame, setFrame] = useState(sun1);
   const [sunWidth, setSunWidth] = useState(0);
 
-  // Arc calculations
-  // Horizontal movement (linear to the right)
-  const moveX = scrollY * 2.5; 
-  
-  // Vertical movement (exponential drop)
-  const moveY = Math.pow(scrollY, 1.2) * 0.45;
+  const maxScroll = 300;
+  const progress = Math.min(scrollY / maxScroll, 1);
+  const moveX = progress * 1200;
+  const moveY = 800 * Math.pow(progress, 2);
 
   useEffect(() => {
     const updateLayout = () => {

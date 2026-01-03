@@ -18,7 +18,7 @@ export default function LayerOne({ sceneRef, scrollY }: Props) {
   
   const progressRef = useRef(1.2); 
   const rafRef = useRef<number>();
-  const scrollMove = scrollY * 0.4;
+  const scrollMove = scrollY * 0.46;
 
   useEffect(() => {
     const animate = () => {
