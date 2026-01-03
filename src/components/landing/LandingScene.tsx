@@ -14,7 +14,6 @@ export default function LandingScene() {
     >
         <LayerZero sceneRef={sceneRef} />
         <LayerOne sceneRef={sceneRef} />
-        <LayerOne sceneRef={sceneRef} />
         <LayerTwo sceneRef={sceneRef} />
         <LayerThree sceneRef={sceneRef} />
     </div>
