@@ -66,8 +66,8 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
   // Parallax Values
   const pLeftFast = -scrollY * 3.5;
   const pRightFast = scrollY * 3.5;
-  const pLeftSlow = -scrollY * 2.4;
-  const pRightSlow = scrollY * 2.4;
+  const pLeftSlow = -scrollY * 1.4;
+  const pRightSlow = scrollY * 1.4;
 
   return (
     <div className="absolute inset-0 -z-20 pointer-events-none overflow-hidden">
@@ -78,13 +78,13 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
 
       {/* --- Distant Clouds --- */}
       {[
-        { src: cloud5, t: '75%', l: 0.55, w: 0.03, dir: pLeftSlow },
+        { src: cloud5, t: '75%', l: 0.55, w: 0.03, dir: pRightSlow },
         { src: cloud6, t: '65%', l: 0.60, w: 0.07, dir: pRightSlow },
-        { src: cloud7, t: '55%', l: 0.95, w: 0.04, dir: pLeftSlow },
-        { src: cloud8, t: '17%', l: 0.85, w: 0.08, dir: pLeftSlow },
-        { src: cloud9, t: '14%', l: 0.01, w: 0.10, dir: pRightSlow },
+        { src: cloud7, t: '55%', l: 0.95, w: 0.04, dir: pRightSlow },
+        { src: cloud8, t: '17%', l: 0.85, w: 0.08, dir: pRightSlow },
+        { src: cloud9, t: '14%', l: 0.01, w: 0.10, dir: pLeftSlow },
         { src: cloud10, t: '57%', l: 0.26, w: 0.09, dir: pLeftSlow },
-        { src: cloud11, t: '70%', l: 0.42, w: 0.05, dir: pRightSlow },
+        { src: cloud11, t: '70%', l: 0.42, w: 0.05, dir: pLeftSlow },
       ].map((c, i) => (
         <img
           key={i}
@@ -102,9 +102,9 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
       {/* --- Foreground Clouds --- */}
       {/* Cloud 1 & 4 move left, Cloud 2 & 3 move right */}
       <img src={cloud1} style={{ width: `${sceneWidth * 0.2}px`, top: '32.9%', left: `${sceneWidth * 0.043}px`, transform: `translate3d(${pLeftFast - (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute z-10" />
-      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '31%', left: `${sceneWidth * 0.262}px`, transform: `translate3d(${pRightFast + (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute z-10" />
+      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '31%', left: `${sceneWidth * 0.262}px`, transform: `translate3d(${pLeftFast + (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute z-10" />
       <img src={cloud3} style={{ width: `${sceneWidth * 0.2}px`, top: '22%', left: `${sceneWidth * 0.502}px`, transform: `translate3d(${pRightFast + (swayB ? 10 : 0)}px, 0, 0)` }} className="absolute z-10" />
-      <img src={cloud4} style={{ width: `${sceneWidth * 0.08}px`, top: '43%', left: `${sceneWidth * 0.89}px`, transform: `translate3d(${pLeftFast + (swayC ? 10 : 0)}px, 0, 0)` }} className="absolute z-10" />
+      <img src={cloud4} style={{ width: `${sceneWidth * 0.08}px`, top: '43%', left: `${sceneWidth * 0.89}px`, transform: `translate3d(${pRightFast + (swayC ? 10 : 0)}px, 0, 0)` }} className="absolute z-10" />
     </div>
   );
 }
