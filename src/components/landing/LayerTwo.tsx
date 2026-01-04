@@ -10,7 +10,7 @@ type Props = {
 export default function LayerTwo({ sceneRef, scrollY }: Props) {
   const [frame, setFrame] = useState(0);
   const [width, setWidth] = useState(0);
-  const scrollMove = scrollY * 0.5;
+  const scrollMove = scrollY * 0.6;
 
   // flicker effect
   useEffect(() => {

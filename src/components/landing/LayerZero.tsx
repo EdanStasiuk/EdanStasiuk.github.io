@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 import Bird from './Bird';
-import branch from '../../assets/landing-pixel-assets/layer-0/branch.png';
+import Branch from '../../assets/landing-pixel-assets/layer-0/branch.png';
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
@@ -24,7 +24,7 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
   }, [sceneRef]);
 
   const birdRightOffset = width * 0.51;
-  const birdBottomOffset = `calc(15vh + ${width * 0.27}px)`;
+  const birdBottomOffset = `calc(25vh + ${width * 0.27}px)`;
 
   return (
     <div 
@@ -33,13 +33,13 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
     >
       <div className="relative w-full h-full">
         <img
-          src={branch}
+          src={Branch}
           alt=""
           style={{ 
             width: `${width}px`, 
             height: 'auto'
           }}
-          className="absolute right-0 bottom-[15vh]"
+          className="absolute right-0 bottom-[25vh]"
         />
         <Bird 
           width={width} 
