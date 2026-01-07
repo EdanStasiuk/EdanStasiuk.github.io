@@ -28,6 +28,7 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
   const [swayD, setSwayD] = useState(false);
 
   const SWAY_DURATION = 2000;
+  const SUN_FLICKER_RATE = 400;
 
   useEffect(() => {
     const updateLayout = () => {
@@ -37,9 +38,12 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
 
     updateLayout();
     window.addEventListener('resize', updateLayout);
+  
+    const intSun = setInterval(() => {
+      setSunFrame(prev => (prev === sun1 ? sun2 : sun1));
+    }, SUN_FLICKER_RATE);
 
     const intA = setInterval(() => {
-      setSunFrame(prev => (prev === sun1 ? sun2 : sun1));
       setSwayA(prev => !prev);
     }, SWAY_DURATION);
 
@@ -50,6 +54,7 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
 
     return () => {
       window.removeEventListener('resize', updateLayout);
+      clearInterval(intSun);
       clearInterval(intA);
       clearTimeout(timeoutB); clearInterval(intB);
       clearTimeout(timeoutC); clearInterval(intC);
