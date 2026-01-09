@@ -1,6 +1,6 @@
 import { RefObject, useEffect, useState } from 'react';
 import Bird from './Bird';
-import Branch from '../../assets/landing-pixel-assets/layer-0/branch.png';
+import Branch from './Branch';
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
@@ -32,15 +32,8 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
       className="absolute inset-0 z-30 pointer-events-none"
     >
       <div className="relative w-full h-full">
-        <img
-          src={Branch}
-          alt=""
-          style={{ 
-            width: `${width}px`, 
-            height: 'auto'
-          }}
-          className="absolute right-0 bottom-[25vh]"
-        />
+        <Branch width={width} />
+        
         <Bird 
           width={width} 
           bottomOffset={birdBottomOffset} 
