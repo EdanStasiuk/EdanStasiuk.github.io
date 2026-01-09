@@ -38,7 +38,7 @@ export default function LayerTwo({ sceneRef, scrollY }: Props) {
 
   return (
     <div 
-      className="absolute inset-0 z-20 pointer-events-none"
+      className="absolute pixelated inset-0 z-20 pointer-events-none"
       style={{ transform: `translateY(${scrollMove}px)` }}
     >
       <img

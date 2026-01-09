@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import birdBase from '../../assets/landing-pixel-assets/layer-0/bird-base-model.png';
-import birdEyeClosed from '../../assets/landing-pixel-assets/layer-0/bird-eye-closed.png';
-import birdHeadBob from '../../assets/landing-pixel-assets/layer-0/bird-head-bob.png';
-import birdHeadTurn1 from '../../assets/landing-pixel-assets/layer-0/bird-head-turn-1.png';
-import birdHeadTurn2 from '../../assets/landing-pixel-assets/layer-0/bird-head-turn-2.png';
+import birdBase from '../../assets/landing-pixel-assets/layer-0/birds/bird-base-model.png';
+import birdEyeClosed from '../../assets/landing-pixel-assets/layer-0/birds/bird-eye-closed.png';
+import birdHeadBob from '../../assets/landing-pixel-assets/layer-0/birds/bird-head-bob.png';
+import birdHeadTurn1 from '../../assets/landing-pixel-assets/layer-0/birds/bird-head-turn-1.png';
+import birdHeadTurn2 from '../../assets/landing-pixel-assets/layer-0/birds/bird-head-turn-2.png';
 
 type Props = {
-  width: number;          // reference width to scale bird relative to branch
-  bottomOffset?: string;  // optional vertical offset
-  rightOffset?: string;   // optional horizontal offset
+  width: number;
+  bottomOffset?: string;
+  rightOffset?: string;
 };
 
 export default function Bird({ width, bottomOffset = '20vh', rightOffset = '15%' }: Props) {
@@ -60,7 +60,7 @@ export default function Bird({ width, bottomOffset = '20vh', rightOffset = '15%'
         bottom: bottomOffset,
         right: rightOffset,
       }}
-      className={`absolute transition-transform`}
+      className={`absolute transition-transform pixelated`}
     />
   );
 }

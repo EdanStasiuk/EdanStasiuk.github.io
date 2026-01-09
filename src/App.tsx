@@ -28,7 +28,7 @@ function App() {
   return (
     <BrowserWidthProvider browserWidth={browserWidth}>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <LandingScene />
         <div
           id="top"
@@ -39,6 +39,14 @@ function App() {
               browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'mt-48' : 'mt-12'
             } mb-12`}
           >
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+
+
             {/* <AboutMe />
             <div className="mb-8" />
             <TechStack />
