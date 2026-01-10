@@ -106,8 +106,8 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
 
       {/* --- Foreground Clouds --- */}
       {/* Cloud 1 & 4 move left, Cloud 2 & 3 move right */}
-      <img src={cloud1} style={{ width: `${sceneWidth * 0.2}px`, top: '34%', left: `${sceneWidth * 0.042}px`, transform: `translate3d(${pLeftFast - (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '32%', left: `${sceneWidth * 0.262}px`, transform: `translate3d(${pLeftFast + (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      <img src={cloud1} style={{ width: `${sceneWidth * 0.2}px`, top: '32.9%', left: `${sceneWidth * 0.042}px`, transform: `translate3d(${pLeftFast - (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '31.99%', left: `${sceneWidth * 0.2585}px`, transform: `translate3d(${pLeftFast + (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
       <img src={cloud3} style={{ width: `${sceneWidth * 0.2}px`, top: '22%', left: `${sceneWidth * 0.502}px`, transform: `translate3d(${pRightFast + (swayB ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
       <img src={cloud4} style={{ width: `${sceneWidth * 0.08}px`, top: '43%', left: `${sceneWidth * 0.89}px`, transform: `translate3d(${pRightFast + (swayC ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
     </div>

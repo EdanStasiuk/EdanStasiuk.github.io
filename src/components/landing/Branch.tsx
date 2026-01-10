@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const n = 4;
+const n = 5;
 const FRAMES: number[] = Array.from({ length: n + 1 }, (_, i) => i);
 const FRAME_RATE = 400;
 

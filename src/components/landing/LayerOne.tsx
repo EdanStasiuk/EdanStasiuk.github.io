@@ -4,7 +4,7 @@ import bridgeImg1 from '../../assets/landing-pixel-assets/layer-1/1-forefront-bu
 import trainImg from '../../assets/landing-pixel-assets/layer-1/1-train.png';
 
 const TRAIN_WIDTH_RATIO = 3.3;
-const ANIMATION_SPEED = 0.003; 
+const ANIMATION_SPEED = 0.0023; 
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
