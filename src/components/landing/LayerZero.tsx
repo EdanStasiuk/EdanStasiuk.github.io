@@ -23,7 +23,7 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
     return () => window.removeEventListener('resize', updateLayout);
   }, [sceneRef]);
 
-  const birdRightOffset = width * 0.476;
+  const birdRightOffset = width * 0.475;
   const birdBottomOffset = `calc(25vh + ${width * 0.28}px)`;
 
   return (

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const n = 5;
-const FRAMES: number[] = Array.from({ length: n + 1 }, (_, i) => i);
-const FRAME_RATE = 400;
+const n = 19;
+const FRAMES: number[] = Array.from({ length: n }, (_, i) => i + 1);
+const FRAME_RATE = 120;
 
 export default function Branch({ width }: { width: number }) {
   const [currentFrame, setCurrentFrame] = useState(0);
@@ -21,7 +21,7 @@ export default function Branch({ width }: { width: number }) {
       style={{ width: `${width}px` }}
     >
       <div className="relative w-full h-full">
-        {FRAMES.map((frameValue) => {
+        {FRAMES.map((frameValue, index) => {
           const src = new URL(
             `../../assets/landing-pixel-assets/layer-0/branches/branch-${frameValue}.png`,
             import.meta.url
@@ -33,7 +33,7 @@ export default function Branch({ width }: { width: number }) {
               src={src}
               alt=""
               className={`w-full h-auto block pixelated ${
-                currentFrame === frameValue 
+                currentFrame === index 
                   ? 'relative opacity-100' 
                   : 'absolute bottom-0 right-0 opacity-0'
               }`}

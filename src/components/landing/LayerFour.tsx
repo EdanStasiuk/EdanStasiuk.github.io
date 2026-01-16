@@ -27,8 +27,11 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
   const [swayC, setSwayC] = useState(false);
   const [swayD, setSwayD] = useState(false);
 
-  const SWAY_DURATION = 2000;
+  const SWAY_DURATION = 3000;
   const SUN_FLICKER_RATE = 400;
+  const SWAY_DISTANCE = 7;
+  const SUN_X_TRAVEL = 1200;
+  const SUN_Y_DROP = 900;
 
   useEffect(() => {
     const updateLayout = () => {
@@ -47,7 +50,7 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
       setSwayA(prev => !prev);
     }, SWAY_DURATION);
 
-    let intB: number, intC: number, intD: number;
+    let intB: number | undefined, intC: number | undefined, intD: number | undefined;
     const timeoutB = setTimeout(() => { intB = setInterval(() => setSwayB(prev => !prev), SWAY_DURATION); }, 300);
     const timeoutC = setTimeout(() => { intC = setInterval(() => setSwayC(prev => !prev), SWAY_DURATION); }, 1300);
     const timeoutD = setTimeout(() => { intD = setInterval(() => setSwayD(prev => !prev), SWAY_DURATION); }, 800);
@@ -56,17 +59,17 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
       window.removeEventListener('resize', updateLayout);
       clearInterval(intSun);
       clearInterval(intA);
-      clearTimeout(timeoutB); clearInterval(intB);
-      clearTimeout(timeoutC); clearInterval(intC);
-      clearTimeout(timeoutD); clearInterval(intD);
+      clearTimeout(timeoutB); if (intB) clearInterval(intB);
+      clearTimeout(timeoutC); if (intC) clearInterval(intC);
+      clearTimeout(timeoutD); if (intD) clearInterval(intD);
     };
-  }, [sceneRef]);
+  }, []);
 
   // Sun
   const sunWidth = sceneWidth / 15;
   const progress = Math.min(scrollY / 400, 1);
-  const sunX = progress * 1200;
-  const sunY = 900 * Math.pow(progress, 2);
+  const sunX = progress * SUN_X_TRAVEL;
+  const sunY = SUN_Y_DROP * Math.pow(progress, 2);
 
   // Parallax Values
   const pLeftFast = -scrollY * 3.5;
@@ -106,10 +109,10 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
 
       {/* --- Foreground Clouds --- */}
       {/* Cloud 1 & 4 move left, Cloud 2 & 3 move right */}
-      <img src={cloud1} style={{ width: `${sceneWidth * 0.2}px`, top: '32.9%', left: `${sceneWidth * 0.042}px`, transform: `translate3d(${pLeftFast - (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '31.99%', left: `${sceneWidth * 0.2585}px`, transform: `translate3d(${pLeftFast + (swayA ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud3} style={{ width: `${sceneWidth * 0.2}px`, top: '22%', left: `${sceneWidth * 0.502}px`, transform: `translate3d(${pRightFast + (swayB ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud4} style={{ width: `${sceneWidth * 0.08}px`, top: '43%', left: `${sceneWidth * 0.89}px`, transform: `translate3d(${pRightFast + (swayC ? 10 : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      <img src={cloud1} style={{ width: `${sceneWidth * 0.2}px`, top: '32.9%', left: `${sceneWidth * 0.0424}px`, transform: `translate3d(${pLeftFast - (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '30.99%', left: `${sceneWidth * 0.2627}px`, transform: `translate3d(${pLeftFast + (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      <img src={cloud3} style={{ width: `${sceneWidth * 0.2}px`, top: '22%', left: `${sceneWidth * 0.502}px`, transform: `translate3d(${pRightFast + (swayB ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      <img src={cloud4} style={{ width: `${sceneWidth * 0.08}px`, top: '43%', left: `${sceneWidth * 0.89}px`, transform: `translate3d(${pRightFast + (swayC ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
     </div>
   );
 }
