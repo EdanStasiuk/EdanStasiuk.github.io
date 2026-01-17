@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-const n = 19;
+const n = 38;
 const FRAMES: number[] = Array.from({ length: n }, (_, i) => i + 1);
-const FRAME_RATE = 120;
+const FRAME_RATE = 130;
 
 export default function Branch({ width }: { width: number }) {
   const [currentFrame, setCurrentFrame] = useState(0);
