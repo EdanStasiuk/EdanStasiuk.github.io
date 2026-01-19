@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import sun1 from '../../assets/landing-pixel-assets/layer-4/sun-1.png';
 import sun2 from '../../assets/landing-pixel-assets/layer-4/sun-2.png';
 import cloud1 from '../../assets/landing-pixel-assets/layer-4/2-background-cloud-1.png';
@@ -18,60 +18,59 @@ type Props = {
   scrollY: number;
 };
 
-export default function LayerFour({ sceneRef, scrollY }: Props) {
-  const [sunFrame, setSunFrame] = useState(sun1);
-  const [sceneWidth, setSceneWidth] = useState(0);
-  
-  const [swayA, setSwayA] = useState(false);
-  const [swayB, setSwayB] = useState(false);
-  const [swayC, setSwayC] = useState(false);
-  const [swayD, setSwayD] = useState(false);
+const SWAY_DURATION = 3000;
+const SUN_FLICKER_RATE = 400;
+const SWAY_DISTANCE = 7;
+const SUN_X_TRAVEL = 1200;
+const SUN_Y_DROP = 900;
 
-  const SWAY_DURATION = 3000;
-  const SUN_FLICKER_RATE = 400;
-  const SWAY_DISTANCE = 7;
-  const SUN_X_TRAVEL = 1200;
-  const SUN_Y_DROP = 900;
+export default function LayerFour({ scrollY }: Props) {
+  const [sunFrame, setSunFrame] = useState(0);
+
+  // sway refs (no re-renders)
+  const swayA = useRef(false);
+  const swayB = useRef(false);
+  const swayC = useRef(false);
+  const swayD = useRef(false);
 
   useEffect(() => {
-    const updateLayout = () => {
-      if (!sceneRef.current) return;
-      setSceneWidth(sceneRef.current.clientWidth);
-    };
-
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-  
-    const intSun = setInterval(() => {
-      setSunFrame(prev => (prev === sun1 ? sun2 : sun1));
+    const sunInt = setInterval(() => {
+      setSunFrame(f => (f === 0 ? 1 : 0));
     }, SUN_FLICKER_RATE);
 
-    const intA = setInterval(() => {
-      setSwayA(prev => !prev);
-    }, SWAY_DURATION);
+    const intA = setInterval(() => (swayA.current = !swayA.current), SWAY_DURATION);
 
-    let intB: number | undefined, intC: number | undefined, intD: number | undefined;
-    const timeoutB = setTimeout(() => { intB = setInterval(() => setSwayB(prev => !prev), SWAY_DURATION); }, 300);
-    const timeoutC = setTimeout(() => { intC = setInterval(() => setSwayC(prev => !prev), SWAY_DURATION); }, 1300);
-    const timeoutD = setTimeout(() => { intD = setInterval(() => setSwayD(prev => !prev), SWAY_DURATION); }, 800);
+    let intB: number | undefined;
+    let intC: number | undefined;
+    let intD: number | undefined;
+
+    const tB = setTimeout(() => {
+      intB = setInterval(() => (swayB.current = !swayB.current), SWAY_DURATION);
+    }, 300);
+
+    const tC = setTimeout(() => {
+      intC = setInterval(() => (swayC.current = !swayC.current), SWAY_DURATION);
+    }, 1300);
+
+    const tD = setTimeout(() => {
+      intD = setInterval(() => (swayD.current = !swayD.current), SWAY_DURATION);
+    }, 800);
 
     return () => {
-      window.removeEventListener('resize', updateLayout);
-      clearInterval(intSun);
+      clearInterval(sunInt);
       clearInterval(intA);
-      clearTimeout(timeoutB); if (intB) clearInterval(intB);
-      clearTimeout(timeoutC); if (intC) clearInterval(intC);
-      clearTimeout(timeoutD); if (intD) clearInterval(intD);
+      clearTimeout(tB); if (intB) clearInterval(intB);
+      clearTimeout(tC); if (intC) clearInterval(intC);
+      clearTimeout(tD); if (intD) clearInterval(intD);
     };
   }, []);
 
-  // Sun
-  const sunWidth = sceneWidth / 15;
+  // Sun motion
   const progress = Math.min(scrollY / 400, 1);
-  const sunX = progress * SUN_X_TRAVEL;
-  const sunY = SUN_Y_DROP * Math.pow(progress, 2);
+  const sunX = SUN_X_TRAVEL * progress;
+  const sunY = SUN_Y_DROP * progress * progress;
 
-  // Parallax Values
+  // Parallax
   const pLeftFast = -scrollY * 3.5;
   const pRightFast = scrollY * 3.5;
   const pLeftSlow = -scrollY * 1.4;
@@ -80,39 +79,94 @@ export default function LayerFour({ sceneRef, scrollY }: Props) {
   return (
     <div className="absolute inset-0 -z-20 pointer-events-none overflow-hidden">
       {/* Sun */}
-      <div className="absolute pixelated" style={{ left: `${sceneWidth * 0.22}px`, top: "25vh", transform: `translate3d(${sunX}px, ${sunY}px, 0)` }}>
-        <img src={sunFrame} alt="sun" style={{ width: `${sunWidth}px`, height: 'auto' }} />
+      <div
+        className="absolute pixelated"
+        style={{
+          left: '22%',
+          top: '25vh',
+          width: '100vw',
+          transform: `translate3d(${sunX}px, ${sunY}px, 0)`,
+          willChange: 'transform',
+        }}
+      >
+        <img
+          src={sun1}
+          alt=""
+          className={`absolute transition-opacity duration-0 ${sunFrame === 0 ? 'opacity-100' : 'opacity-0'}`}
+          style={{ width: '6.666%', willChange: 'opacity' }}
+        />
+        <img
+          src={sun2}
+          alt=""
+          className={`absolute transition-opacity duration-0 ${sunFrame === 1 ? 'opacity-100' : 'opacity-0'}`}
+          style={{ width: '6.666%', willChange: 'opacity' }}
+        />
       </div>
 
-      {/* --- Distant Clouds --- */}
+      {/* Distant clouds */}
       {[
-        { src: cloud5, t: '75%', l: 0.55, w: 0.03, dir: pRightSlow },
-        { src: cloud6, t: '65%', l: 0.60, w: 0.07, dir: pRightSlow },
-        { src: cloud7, t: '55%', l: 0.95, w: 0.04, dir: pRightSlow },
-        { src: cloud8, t: '17%', l: 0.85, w: 0.08, dir: pRightSlow },
-        { src: cloud9, t: '14%', l: 0.01, w: 0.10, dir: pLeftSlow },
-        { src: cloud10, t: '57%', l: 0.26, w: 0.09, dir: pLeftSlow },
-        { src: cloud11, t: '70%', l: 0.42, w: 0.05, dir: pLeftSlow },
+        { src: cloud5, t: '75%', l: '55%', w: '3%', dir: pRightSlow },
+        { src: cloud6, t: '65%', l: '60%', w: '7%', dir: pRightSlow },
+        { src: cloud7, t: '55%', l: '95%', w: '4%', dir: pRightSlow },
+        { src: cloud8, t: '17%', l: '85%', w: '8%', dir: pRightSlow },
+        { src: cloud9, t: '14%', l: '1%',  w: '10%', dir: pLeftSlow },
+        { src: cloud10, t: '57%', l: '26%', w: '9%', dir: pLeftSlow },
+        { src: cloud11, t: '70%', l: '42%', w: '5%', dir: pLeftSlow },
       ].map((c, i) => (
         <img
           key={i}
           src={c.src}
+          className="absolute z-0 pixelated"
           style={{
-            width: `${sceneWidth * c.w}px`,
+            width: c.w,
             top: c.t,
-            left: `${sceneWidth * c.l}px`,
-            transform: `translate3d(${c.dir + (swayD ? 5 : 0)}px, 0, 0)`,
+            left: c.l,
+            transform: `translate3d(${c.dir + (swayD.current ? 5 : 0)}px, 0, 0)`,
           }}
-          className="absolute z-0" 
         />
       ))}
 
-      {/* --- Foreground Clouds --- */}
-      {/* Cloud 1 & 4 move left, Cloud 2 & 3 move right */}
-      <img src={cloud1} style={{ width: `${sceneWidth * 0.2}px`, top: '32.9%', left: `${sceneWidth * 0.0424}px`, transform: `translate3d(${pLeftFast - (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud2} style={{ width: `${sceneWidth * 0.14}px`, top: '30.99%', left: `${sceneWidth * 0.2627}px`, transform: `translate3d(${pLeftFast + (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud3} style={{ width: `${sceneWidth * 0.2}px`, top: '22%', left: `${sceneWidth * 0.502}px`, transform: `translate3d(${pRightFast + (swayB ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
-      <img src={cloud4} style={{ width: `${sceneWidth * 0.08}px`, top: '43%', left: `${sceneWidth * 0.89}px`, transform: `translate3d(${pRightFast + (swayC ? SWAY_DISTANCE : 0)}px, 0, 0)` }} className="absolute pixelated z-10" />
+      {/* Foreground clouds */}
+      <img
+        src={cloud1}
+        className="absolute pixelated z-10"
+        style={{
+          width: '20%',
+          top: '32.9%',
+          left: '4.24%',
+          transform: `translate3d(${pLeftFast - (swayA.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+        }}
+      />
+      <img
+        src={cloud2}
+        className="absolute pixelated z-10"
+        style={{
+          width: '14%',
+          top: '30.99%',
+          left: '26.27%',
+          transform: `translate3d(${pLeftFast + (swayA.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+        }}
+      />
+      <img
+        src={cloud3}
+        className="absolute pixelated z-10"
+        style={{
+          width: '20%',
+          top: '22%',
+          left: '50.2%',
+          transform: `translate3d(${pRightFast + (swayB.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+        }}
+      />
+      <img
+        src={cloud4}
+        className="absolute pixelated z-10"
+        style={{
+          width: '8%',
+          top: '43%',
+          left: '89%',
+          transform: `translate3d(${pRightFast + (swayC.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+        }}
+      />
     </div>
   );
 }

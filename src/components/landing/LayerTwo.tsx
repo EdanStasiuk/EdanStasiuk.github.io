@@ -7,45 +7,46 @@ type Props = {
   scrollY: number;
 };
 
-export default function LayerTwo({ sceneRef, scrollY }: Props) {
+export default function LayerTwo({ scrollY }: Props) {
   const [frame, setFrame] = useState(0);
-  const [width, setWidth] = useState(0);
-  const scrollMove = scrollY * 0.6;
+  const scrollMove = Math.round(scrollY * 0.6);
 
-  // flicker effect
+  // Flicker effect
   useEffect(() => {
     let timeout: number;
     const flicker = () => {
       setFrame(f => (f === 0 ? 1 : 0));
-      timeout = setTimeout(flicker, 120 + Math.random() * 220);
+      timeout = window.setTimeout(flicker, 120 + Math.random() * 220);
     };
     flicker();
     return () => clearTimeout(timeout);
   }, []);
 
-  // scale with scene width
-  useEffect(() => {
-    const updateLayout = () => {
-      const scene = sceneRef.current;
-      if (!scene) return;
-      setWidth(scene.clientWidth);
-    };
-
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-    return () => window.removeEventListener('resize', updateLayout);
-  }, [sceneRef]);
-
   return (
-    <div 
-      className="absolute pixelated inset-0 z-20 pointer-events-none"
-      style={{ transform: `translateY(${scrollMove}px)` }}
+    <div
+      className="absolute inset-0 z-20 pointer-events-none pixelated"
+      style={{
+        transform: `translate3d(0, ${scrollMove}px, 0)`,
+        willChange: 'transform',
+      }}
     >
       <img
-        src={frame === 0 ? backgroundBuildings0 : backgroundBuildings1}
+        src={backgroundBuildings0}
         alt=""
-        style={{ width: `${width}px`, height: 'auto' }}
-        className="absolute left-0 bottom-0"
+        className={`absolute left-0 bottom-0 w-full h-auto transition-opacity duration-0 ${
+          frame === 0 ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ willChange: 'opacity' }}
+        draggable={false}
+      />
+      <img
+        src={backgroundBuildings1}
+        alt=""
+        className={`absolute left-0 bottom-0 w-full h-auto transition-opacity duration-0 ${
+          frame === 1 ? 'opacity-100' : 'opacity-0'
+        }`}
+        style={{ willChange: 'opacity' }}
+        draggable={false}
       />
     </div>
   );
