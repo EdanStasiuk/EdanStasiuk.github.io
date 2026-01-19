@@ -1,18 +1,41 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-const n = 38;
-const FRAMES: number[] = Array.from({ length: n }, (_, i) => i + 1);
+const FRAME_COUNT = 38;
 const FRAME_RATE = 130;
 
-export default function Branch({ width }: { width: number }) {
-  const [currentFrame, setCurrentFrame] = useState(0);
+const BRANCH_FRAMES = Array.from({ length: FRAME_COUNT }, (_, i) =>
+  new URL(`../../assets/landing-pixel-assets/layer-0/branches/branch-${i + 1}.png`, import.meta.url).href
+);
+
+type Props = {
+  width: number;
+};
+
+export default function Branch({ width }: Props) {
+  const imgRef = useRef<HTMLImageElement>(null);
+  const frameRef = useRef(0);
+  const lastTimeRef = useRef<number>(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentFrame((prev) => (prev + 1) % FRAMES.length);
-    }, FRAME_RATE);
+    let animationFrameId: number;
 
-    return () => clearInterval(timer);
+    const update = (time: number) => {
+      if (!lastTimeRef.current) lastTimeRef.current = time;
+
+      if (time - lastTimeRef.current >= FRAME_RATE) {
+        frameRef.current = (frameRef.current + 1) % FRAME_COUNT;
+        if (imgRef.current) {
+          imgRef.current.src = BRANCH_FRAMES[frameRef.current];
+        }
+        lastTimeRef.current = time;
+      }
+
+      animationFrameId = requestAnimationFrame(update);
+    };
+
+    animationFrameId = requestAnimationFrame(update);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
@@ -20,27 +43,14 @@ export default function Branch({ width }: { width: number }) {
       className="absolute right-0 bottom-[25vh]" 
       style={{ width: `${width}px` }}
     >
-      <div className="relative w-full h-full">
-        {FRAMES.map((frameValue, index) => {
-          const src = new URL(
-            `../../assets/landing-pixel-assets/layer-0/branches/branch-${frameValue}.png`,
-            import.meta.url
-          ).href;
-
-          return (
-            <img
-              key={frameValue}
-              src={src}
-              alt=""
-              className={`w-full h-auto block pixelated ${
-                currentFrame === index 
-                  ? 'relative opacity-100' 
-                  : 'absolute bottom-0 right-0 opacity-0'
-              }`}
-            />
-          );
-        })}
-      </div>
+      <img
+        ref={imgRef}
+        src={BRANCH_FRAMES[0]}
+        alt=""
+        className="w-full h-auto block pixelated"
+        draggable={false}
+        style={{ willChange: 'transform, opacity' }}
+      />
     </div>
   );
 }
