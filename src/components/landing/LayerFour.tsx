@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useState } from 'react';
 import sun1 from '../../assets/landing-pixel-assets/layer-4/sun-1.png';
 import sun2 from '../../assets/landing-pixel-assets/layer-4/sun-2.png';
 import cloud1 from '../../assets/landing-pixel-assets/layer-4/2-background-cloud-1.png';
@@ -25,45 +25,28 @@ const SUN_X_TRAVEL = 1200;
 const SUN_Y_DROP = 900;
 
 export default function LayerFour({ scrollY }: Props) {
-  const [sunFrame, setSunFrame] = useState(0);
-
-  // sway refs (no re-renders)
-  const swayA = useRef(false);
-  const swayB = useRef(false);
-  const swayC = useRef(false);
-  const swayD = useRef(false);
+  const [time, setTime] = useState(performance.now());
 
   useEffect(() => {
-    const sunInt = setInterval(() => {
-      setSunFrame(f => (f === 0 ? 1 : 0));
-    }, SUN_FLICKER_RATE);
+    let frameId: number;
 
-    const intA = setInterval(() => (swayA.current = !swayA.current), SWAY_DURATION);
-
-    let intB: number | undefined;
-    let intC: number | undefined;
-    let intD: number | undefined;
-
-    const tB = setTimeout(() => {
-      intB = setInterval(() => (swayB.current = !swayB.current), SWAY_DURATION);
-    }, 300);
-
-    const tC = setTimeout(() => {
-      intC = setInterval(() => (swayC.current = !swayC.current), SWAY_DURATION);
-    }, 1300);
-
-    const tD = setTimeout(() => {
-      intD = setInterval(() => (swayD.current = !swayD.current), SWAY_DURATION);
-    }, 800);
-
-    return () => {
-      clearInterval(sunInt);
-      clearInterval(intA);
-      clearTimeout(tB); if (intB) clearInterval(intB);
-      clearTimeout(tC); if (intC) clearInterval(intC);
-      clearTimeout(tD); if (intD) clearInterval(intD);
+    const update = () => {
+      setTime(performance.now());
+      frameId = requestAnimationFrame(update);
     };
+
+    frameId = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(frameId);
   }, []);
+
+  // Time-based sun flicker
+  const sunFrame = Math.floor(time / SUN_FLICKER_RATE) % 2;
+
+  // Time-based cloud sway, with offsets
+  const swayA = Math.floor((time + 0) / SWAY_DURATION) % 2 === 0;
+  const swayB = Math.floor((time + 300) / SWAY_DURATION) % 2 === 0;
+  const swayC = Math.floor((time + 1300) / SWAY_DURATION) % 2 === 0;
+  const swayD = Math.floor((time + 800) / SWAY_DURATION) % 2 === 0;
 
   // Sun motion
   const progress = Math.min(scrollY / 400, 1);
@@ -105,13 +88,13 @@ export default function LayerFour({ scrollY }: Props) {
 
       {/* Distant clouds */}
       {[
-        { src: cloud5, t: '75%', l: '55%', w: '3%', dir: pRightSlow },
-        { src: cloud6, t: '65%', l: '60%', w: '7%', dir: pRightSlow },
-        { src: cloud7, t: '55%', l: '95%', w: '4%', dir: pRightSlow },
-        { src: cloud8, t: '17%', l: '85%', w: '8%', dir: pRightSlow },
-        { src: cloud9, t: '14%', l: '1%',  w: '10%', dir: pLeftSlow },
-        { src: cloud10, t: '57%', l: '26%', w: '9%', dir: pLeftSlow },
-        { src: cloud11, t: '70%', l: '42%', w: '5%', dir: pLeftSlow },
+        { src: cloud5, t: '75%', l: '55%', w: '3%', dir: pRightSlow, sway: swayD },
+        { src: cloud6, t: '65%', l: '60%', w: '7%', dir: pRightSlow, sway: swayD },
+        { src: cloud7, t: '55%', l: '95%', w: '4%', dir: pRightSlow, sway: swayD },
+        { src: cloud8, t: '17%', l: '85%', w: '8%', dir: pRightSlow, sway: swayD },
+        { src: cloud9, t: '14%', l: '1%', w: '10%', dir: pLeftSlow, sway: swayD },
+        { src: cloud10, t: '57%', l: '26%', w: '9%', dir: pLeftSlow, sway: swayD },
+        { src: cloud11, t: '70%', l: '42%', w: '5%', dir: pLeftSlow, sway: swayD },
       ].map((c, i) => (
         <img
           key={i}
@@ -121,7 +104,7 @@ export default function LayerFour({ scrollY }: Props) {
             width: c.w,
             top: c.t,
             left: c.l,
-            transform: `translate3d(${c.dir + (swayD.current ? 5 : 0)}px, 0, 0)`,
+            transform: `translate3d(${c.dir + (c.sway ? 5 : 0)}px, 0, 0)`,
           }}
         />
       ))}
@@ -134,7 +117,7 @@ export default function LayerFour({ scrollY }: Props) {
           width: '20%',
           top: '32.9%',
           left: '4.24%',
-          transform: `translate3d(${pLeftFast - (swayA.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+          transform: `translate3d(${pLeftFast - (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
       />
       <img
@@ -144,7 +127,7 @@ export default function LayerFour({ scrollY }: Props) {
           width: '14%',
           top: '30.99%',
           left: '26.27%',
-          transform: `translate3d(${pLeftFast + (swayA.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+          transform: `translate3d(${pLeftFast + (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
       />
       <img
@@ -154,7 +137,7 @@ export default function LayerFour({ scrollY }: Props) {
           width: '20%',
           top: '22%',
           left: '50.2%',
-          transform: `translate3d(${pRightFast + (swayB.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+          transform: `translate3d(${pRightFast + (swayB ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
       />
       <img
@@ -164,7 +147,7 @@ export default function LayerFour({ scrollY }: Props) {
           width: '8%',
           top: '43%',
           left: '89%',
-          transform: `translate3d(${pRightFast + (swayC.current ? SWAY_DISTANCE : 0)}px, 0, 0)`,
+          transform: `translate3d(${pRightFast + (swayC ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
       />
     </div>

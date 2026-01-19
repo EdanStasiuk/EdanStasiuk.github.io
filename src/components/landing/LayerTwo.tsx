@@ -11,15 +11,18 @@ export default function LayerTwo({ scrollY }: Props) {
   const [frame, setFrame] = useState(0);
   const scrollMove = Math.round(scrollY * 0.6);
 
-  // Flicker effect
   useEffect(() => {
-    let timeout: number;
-    const flicker = () => {
-      setFrame(f => (f === 0 ? 1 : 0));
-      timeout = window.setTimeout(flicker, 120 + Math.random() * 220);
+    let frameId: number;
+
+    const updateFrame = () => {
+      const t = performance.now();
+      // Alternate frames every ~200ms
+      setFrame(Math.floor((t / 200) % 2));
+      frameId = requestAnimationFrame(updateFrame);
     };
-    flicker();
-    return () => clearTimeout(timeout);
+
+    frameId = requestAnimationFrame(updateFrame);
+    return () => cancelAnimationFrame(frameId);
   }, []);
 
   return (
