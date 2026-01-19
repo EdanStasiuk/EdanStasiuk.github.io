@@ -1,51 +1,28 @@
-import { RefObject, useEffect, useState } from 'react';
-import backgroundBuildings0 from '../../assets/landing-pixel-assets/layer-3/3-background-buildings.png';
-import backgroundBuildings1 from '../../assets/landing-pixel-assets/layer-3/3-background-buildings.png';
+import { RefObject } from 'react';
+import backgroundBuildings from '../../assets/landing-pixel-assets/layer-3/3-background-buildings.png';
 
 type Props = {
   sceneRef: RefObject<HTMLDivElement>;
   scrollY: number;
 };
 
-export default function LayerThree({ sceneRef, scrollY }: Props) {
-  const [frame, setFrame] = useState(0);
-  const [width, setWidth] = useState(0);
-  const scrollMove = scrollY * 0.8;
-
-  // flicker effect
-  useEffect(() => {
-    let timeout: number;
-    const flicker = () => {
-      setFrame(f => (f === 0 ? 1 : 0));
-      timeout = setTimeout(flicker, 120 + Math.random() * 220);
-    };
-    flicker();
-    return () => clearTimeout(timeout);
-  }, []);
-
-  // scale with scene width
-  useEffect(() => {
-    const updateLayout = () => {
-      const scene = sceneRef.current;
-      if (!scene) return;
-      setWidth(scene.clientWidth);
-    };
-
-    updateLayout();
-    window.addEventListener('resize', updateLayout);
-    return () => window.removeEventListener('resize', updateLayout);
-  }, [sceneRef]);
+export default function LayerThree({ scrollY }: Props) {
+  // Round to avoid sub-pixel shimmer
+  const scrollMove = Math.round(scrollY * 0.8);
 
   return (
     <div
       className="absolute inset-0 z-0 pointer-events-none"
-      style={{ transform: `translateY(${scrollMove}px)` }}
+      style={{
+        transform: `translate3d(0, ${scrollMove}px, 0)`,
+        willChange: 'transform',
+      }}
     >
       <img
-        src={frame === 0 ? backgroundBuildings0 : backgroundBuildings1}
+        src={backgroundBuildings}
         alt=""
-        style={{ width: `${width}px`, height: 'auto' }}
-        className="absolute -0 bottom-0"
+        className="absolute left-0 bottom-0 w-full h-auto pixelated"
+        draggable={false}
       />
     </div>
   );
