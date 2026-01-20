@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 const FRAME_COUNT = 38;
-const FRAME_RATE = 130;
+const FRAME_RATE = 60;
 
 const BRANCH_FRAMES = Array.from({ length: FRAME_COUNT }, (_, i) =>
   new URL(`../../assets/landing-pixel-assets/layer-0/branches/branch-${i + 1}.png`, import.meta.url).href
