@@ -35,7 +35,10 @@ export default function LayerOne({ sceneRef, scrollY }: Props) {
       const trainH = train.offsetHeight;
 
       progressRef.current -= ANIMATION_SPEED;
-      if (progressRef.current < -0.6) progressRef.current = 1.5;
+      if (progressRef.current < -0.6) {
+        // Resets to a random distance between 1.5 and 3.5 
+        progressRef.current = 1.5 + Math.random() * 2; 
+      }
 
       const trainWidth = sceneW / TRAIN_WIDTH_RATIO;
       const trainY = Math.round(bridgeH - trainH * 9.23);
