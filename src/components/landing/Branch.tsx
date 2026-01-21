@@ -47,7 +47,7 @@ export default function Branch({ width }: Props) {
         ref={imgRef}
         src={BRANCH_FRAMES[0]}
         alt=""
-        className="w-full h-auto block pixelated"
+        className="w-full h-auto block pixelated-layer"
         draggable={false}
         style={{ willChange: 'transform, opacity' }}
       />

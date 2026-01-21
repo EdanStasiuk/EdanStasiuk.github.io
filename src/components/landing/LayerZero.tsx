@@ -29,7 +29,7 @@ export default function LayerZero({ sceneRef, scrollY }: Props) {
   return (
     <div 
       style={{ transform: `translateX(${translateX}px)` }}
-      className="absolute inset-0 z-30 pointer-events-none"
+      className="absolute pixelated-layer inset-0 z-30 pointer-events-none"
     >
       <div className="relative w-full h-full">
         <Branch width={width} />

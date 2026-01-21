@@ -60,10 +60,10 @@ export default function LayerFour({ scrollY }: Props) {
   const pRightSlow = scrollY * 1.4;
 
   return (
-    <div className="absolute inset-0 -z-20 pointer-events-none overflow-hidden">
+    <div className="absolute pixelated-layer inset-0 -z-20 pointer-events-none overflow-hidden">
       {/* Sun */}
       <div
-        className="absolute pixelated"
+        className="absolute"
         style={{
           left: '22%',
           top: '25vh',
@@ -99,7 +99,7 @@ export default function LayerFour({ scrollY }: Props) {
         <img
           key={i}
           src={c.src}
-          className="absolute z-0 pixelated"
+          className="absolute z-0"
           style={{
             width: c.w,
             top: c.t,
@@ -112,7 +112,7 @@ export default function LayerFour({ scrollY }: Props) {
       {/* Foreground clouds */}
       <img
         src={cloud1}
-        className="absolute pixelated z-10"
+        className="absolute z-10"
         style={{
           width: '20%',
           top: '32.9%',
@@ -122,7 +122,7 @@ export default function LayerFour({ scrollY }: Props) {
       />
       <img
         src={cloud2}
-        className="absolute pixelated z-10"
+        className="absolute z-10"
         style={{
           width: '14%',
           top: '30.99%',
@@ -132,7 +132,7 @@ export default function LayerFour({ scrollY }: Props) {
       />
       <img
         src={cloud3}
-        className="absolute pixelated z-10"
+        className="absolute z-10"
         style={{
           width: '20%',
           top: '22%',
@@ -142,7 +142,7 @@ export default function LayerFour({ scrollY }: Props) {
       />
       <img
         src={cloud4}
-        className="absolute pixelated z-10"
+        className="absolute z-10"
         style={{
           width: '8%',
           top: '43%',

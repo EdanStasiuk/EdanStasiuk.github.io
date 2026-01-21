@@ -74,7 +74,7 @@ export default function Bird({ width, bottomOffset = '20vh', rightOffset = '15%'
         bottom: bottomOffset,
         right: rightOffset,
       }}
-      className="absolute pixelated"
+      className="absolute pixelated-layer"
       draggable={false}
     />
   );

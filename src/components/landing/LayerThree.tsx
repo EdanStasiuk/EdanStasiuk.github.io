@@ -72,7 +72,7 @@ export default function LayerThree({ sceneRef, scrollY }: Props) {
 
   return (
     <div
-      className="absolute inset-0 pointer-events-none"
+      className="absolute pixelated-layer inset-0 pointer-events-none"
       style={{
         transform: `translate3d(0, ${scrollMove}px, 0)`,
         willChange: 'transform',
@@ -86,7 +86,7 @@ export default function LayerThree({ sceneRef, scrollY }: Props) {
           ref={(el) => { if (el) carRefs.current[i] = el; }}
           src={src}
           alt=""
-          className="absolute pixelated will-change-transform bottom-0"
+          className="absolute will-change-transform bottom-0"
           style={{
             zIndex: Z_CARS,
             transformOrigin: 'bottom left',
@@ -99,7 +99,7 @@ export default function LayerThree({ sceneRef, scrollY }: Props) {
         ref={buildingsRef}
         src={backgroundBuildings}
         alt=""
-        className="absolute left-0 bottom-0 w-full pixelated"
+        className="absolute left-0 bottom-0 w-full pixelated-layer"
         style={{ zIndex: Z_BUILDINGS }}
         draggable={false}
       />
