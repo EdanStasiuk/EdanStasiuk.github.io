@@ -53,11 +53,14 @@ export default function LayerFour({ scrollY }: Props) {
   const sunX = SUN_X_TRAVEL * progress;
   const sunY = SUN_Y_DROP * progress * progress;
 
-  // Parallax
+  // Parallax for clouds
   const pLeftFast = -scrollY * 3.5;
   const pRightFast = scrollY * 3.5;
   const pLeftSlow = -scrollY * 1.4;
   const pRightSlow = scrollY * 1.4;
+  
+  // Parallax for hero
+  const heroParallaxY = scrollY * 1.25;
 
   return (
     <div className="absolute pixelated-layer inset-0 -z-20 pointer-events-none overflow-hidden">
@@ -66,7 +69,7 @@ export default function LayerFour({ scrollY }: Props) {
         className="absolute"
         style={{
           left: '22%',
-          top: '25vh',
+          top: '30vh',
           width: '100vw',
           transform: `translate3d(${sunX}px, ${sunY}px, 0)`,
           willChange: 'transform',
@@ -92,7 +95,7 @@ export default function LayerFour({ scrollY }: Props) {
         { src: cloud6, t: '65%', l: '60%', w: '7%', dir: pRightSlow, sway: swayD },
         { src: cloud7, t: '55%', l: '95%', w: '4%', dir: pRightSlow, sway: swayD },
         { src: cloud8, t: '17%', l: '85%', w: '8%', dir: pRightSlow, sway: swayD },
-        { src: cloud9, t: '14%', l: '1%', w: '10%', dir: pLeftSlow, sway: swayD },
+        { src: cloud9, t: '19%', l: '15%', w: '12%', dir: pLeftSlow, sway: swayD },
         { src: cloud10, t: '57%', l: '26%', w: '9%', dir: pLeftSlow, sway: swayD },
         { src: cloud11, t: '70%', l: '42%', w: '5%', dir: pLeftSlow, sway: swayD },
       ].map((c, i) => (
@@ -109,13 +112,30 @@ export default function LayerFour({ scrollY }: Props) {
         />
       ))}
 
+      {/* Hero Name */}
+      <div
+        className="absolute z-20 pointer-events-none flex items-center"
+        style={{
+          left: '50%',
+          top: '23.5%',
+          gap: '16px',
+          transform: `translateX(-50%) translateY(${heroParallaxY}px)`,
+          opacity: 1,
+          willChange: 'transform',
+        }}
+      >
+        <span className='text-hero text-[64px] tracking-widest font-hero font-medium'>
+          Edan Stasiuk
+        </span>
+      </div>
+
       {/* Foreground clouds */}
       <img
         src={cloud1}
         className="absolute z-10"
         style={{
           width: '20%',
-          top: '32.9%',
+          top: '31.9%',
           left: '4.24%',
           transform: `translate3d(${pLeftFast - (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
@@ -125,7 +145,7 @@ export default function LayerFour({ scrollY }: Props) {
         className="absolute z-10"
         style={{
           width: '14%',
-          top: '30.99%',
+          top: '36.99%',
           left: '26.27%',
           transform: `translate3d(${pLeftFast + (swayA ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
@@ -134,9 +154,9 @@ export default function LayerFour({ scrollY }: Props) {
         src={cloud3}
         className="absolute z-10"
         style={{
-          width: '20%',
-          top: '22%',
-          left: '50.2%',
+          width: '25%',
+          top: '12%',
+          left: '45%',
           transform: `translate3d(${pRightFast + (swayB ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
       />
@@ -145,8 +165,8 @@ export default function LayerFour({ scrollY }: Props) {
         className="absolute z-10"
         style={{
           width: '8%',
-          top: '43%',
-          left: '89%',
+          top: '43.5%',
+          left: '84%',
           transform: `translate3d(${pRightFast + (swayC ? SWAY_DISTANCE : 0)}px, 0, 0)`,
         }}
       />
