@@ -6,10 +6,13 @@ export default {
   ],
   theme: {
     fontFamily: {
+      roboto: ["Roboto", "sans-serif"],
       robotoFlex: ["Roboto Flex", "sans-serif"],
+      hero: ["Roboto", "sans-serif"],
     },
     colors: {
-      'background': '#1E1E1E',
+      'background': '#87CEEB',
+      'hero': '#10689A',
       'secondary-background': '#232323',
       'tails-background': '#1A1A1A',
       'tails-border': '#343431',
@@ -21,4 +24,3 @@ export default {
   },
   plugins: [],
 }
-
