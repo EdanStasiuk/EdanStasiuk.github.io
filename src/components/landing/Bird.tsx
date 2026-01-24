@@ -42,9 +42,9 @@ export default function Bird({
   const birdSize = width / 6;
 
   // Bubble sizing
-  const bubbleWidth = Math.round(birdSize * 1.9);
-  const bubbleHeight = Math.round(birdSize * 0.9);
-  const bubbleFontSize = Math.round(birdSize * 0.16 * 10) / 10;
+  const bubbleWidth = Math.round(birdSize * 2.8);
+  const bubbleHeight = Math.round(birdSize * 1.4);
+  const bubbleFontSize = Math.round(birdSize * 0.22 * 10) / 10;
   const bubblePaddingX = 0;
   const bubblePaddingY = 0;
 
@@ -88,7 +88,7 @@ export default function Bird({
       <div
         className="absolute pixelated-layer"
         style={{
-          left: `-${bubbleWidth * 0.85}px`,
+          left: `-${bubbleWidth * 0.90}px`,
           top: `-${bubbleHeight * 0.57}px`,
           width: bubbleWidth,
           height: bubbleHeight,
@@ -123,6 +123,7 @@ export default function Bird({
             color: 'inherit',
             paddingRight: bubbleFontSize * 0.8,
             gap: Math.round(bubbleFontSize * 0.3),
+            letterSpacing: bubbleFontSize * 0.03,
           }}
         >
           <span className='text-scene-text'>No flying... just scrolling!</span>
