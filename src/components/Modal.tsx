@@ -1,7 +1,7 @@
 interface Props {
   isOpen: boolean;
   onClose: () => void;
-  imageUrl: string;
+  imageUrl?: string;
   imageAlt: string;
 }
 
