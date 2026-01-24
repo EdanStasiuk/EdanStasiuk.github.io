@@ -50,12 +50,11 @@ export default function Experience() {
           location="Vancouver, BC"
           date="May 2025 – Dec 2025"
           bullets={[
-            "Built ~7 end-to-end test suites with 150+ assertions using Python and pytest to validate application behavior",
-            "Designed reusable, object-oriented Selenium modules to standardize UI testing and accelerate team workflows",
-            "Resolved ~8 critical C++ security vulnerabilities, improving backend stability and security posture",
-            "Maintained CI/CD pipelines in Atlassian Bamboo, restoring nightly automation reliability across 70+ test cases",
-            "Collaborated on an MCP server during a company-wide hackathon that was greenlit for product development",
-            // "Performed end-to-end, functional, and regression testing during validation for new releases, reporting, and fixing critical bugs",
+            "Created automated test suites in Python and pytest with over 150 assertions to ensure reliable application behavior.",
+            "Built reusable Selenium modules to streamline UI testing and accelerate team development workflows.",
+            "Fixed critical C++ security vulnerabilities, improving system stability and safety.",
+            "Maintained and improved CI/CD pipelines in Atlassian Bamboo, ensuring nightly automation reliability.",
+            "Contributed to an MCP server project during a company hackathon, which was greenlit for further product development.",
           ]}
         />
 
@@ -65,10 +64,9 @@ export default function Experience() {
           location="Vancouver, BC"
           date="Jan 2025 – Present"
           bullets={[
-            "Developed and maintained ground station infrastructure enabling command, telemetry, and image downlink for a CubeSat mission",
-            "Implemented a REST API using TypeScript, Express.js, Prisma ORM, and OpenAPI to serve Earth image requests, with \
-            automated test coverage through Mocha and Chai",
-            "Simulated over 4,000 missions using the European Space Agency's (ESA) Debris Risk Assessment and Mitigation Analysis (DRAMA) program and it's associated Python package, pyDRAMA, to determine viable launch epochs and maximum orbit altitudes meeting mission duration requirements",
+            "Developed ground station infrastructure to reliably command and receive telemetry and images from a CubeSat mission.",
+            "Built a REST API with TypeScript, Express.js, Prisma ORM, and OpenAPI to serve Earth image requests, including automated tests using Mocha and Chai.",
+            "Ran simulations for over 4,000 satellite missions using ESA's DRAMA program and pyDRAMA, helping determine optimal launch windows and orbit parameters.",
           ]}
         />
       </div>

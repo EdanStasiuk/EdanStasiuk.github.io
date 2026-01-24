@@ -10,7 +10,9 @@ export default function AboutMe() {
           dual-concentrating in Artificial Intelligence and Computing Systems.
         </p>
         <p className='mb-4'>
-          I aspire to develop autonomous systems and advance modern financial technologies, with a focus on decentralized and open-source solutions.
+          I’ve worked on backend systems and real-world engineering projects, including developing
+          ground station software for the ALEASAT CubeSat and building APIs and services that handle
+          complex data flows, asynchronous processing, and reliable storage and retrieval.
         </p>
         <p className='mb-4'>
           When I’m not immersed in code or my studies, you can find me at the gym or playing piano!
