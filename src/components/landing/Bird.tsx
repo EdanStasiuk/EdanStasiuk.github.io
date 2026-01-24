@@ -4,6 +4,8 @@ import birdEyeClosed from '../../assets/landing-pixel-assets/layer-0/birds/bird-
 import birdHeadBob from '../../assets/landing-pixel-assets/layer-0/birds/bird-head-bob.png';
 import birdHeadTurn1 from '../../assets/landing-pixel-assets/layer-0/birds/bird-head-turn-1.png';
 import birdHeadTurn2 from '../../assets/landing-pixel-assets/layer-0/birds/bird-head-turn-2.png';
+import speechBubble from '../../assets/landing-pixel-assets/layer-0/speech-bubble.png';
+import downArrow from '../../assets/landing-pixel-assets/layer-0/down-arrow.png';
 
 type Props = {
   width: number;
@@ -11,7 +13,7 @@ type Props = {
   rightOffset?: string;
 };
 
-// Precompute the sequence
+// Precompute the sequence for the bird animation
 const SEQUENCE = [
   { frame: birdHeadTurn1, duration: 200 },
   { frame: birdHeadTurn2, duration: 500 },
@@ -27,7 +29,11 @@ const SEQUENCE = [
   { frame: birdBase, duration: 3000 },
 ];
 
-export default function Bird({ width, bottomOffset = '20vh', rightOffset = '15%' }: Props) {
+export default function Bird({
+  width,
+  bottomOffset = '20vh',
+  rightOffset = '15%',
+}: Props) {
   const imgRef = useRef<HTMLImageElement>(null);
   const frameIndex = useRef(0);
   const lastTimeRef = useRef<number>(0);
@@ -35,6 +41,14 @@ export default function Bird({ width, bottomOffset = '20vh', rightOffset = '15%'
 
   const birdSize = width / 6;
 
+  // Bubble sizing
+  const bubbleWidth = Math.round(birdSize * 1.9);
+  const bubbleHeight = Math.round(birdSize * 0.9);
+  const bubbleFontSize = Math.round(birdSize * 0.16 * 10) / 10;
+  const bubblePaddingX = 0;
+  const bubblePaddingY = 0;
+
+  // Bird animation loop
   useEffect(() => {
     let animationFrameId: number;
 
@@ -57,25 +71,86 @@ export default function Bird({ width, bottomOffset = '20vh', rightOffset = '15%'
     };
 
     animationFrameId = requestAnimationFrame(update);
-
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
-    <img
-      ref={imgRef}
-      src={SEQUENCE[0].frame}
-      alt="bird"
+    <div
+      className="absolute pixelated-layer"
       style={{
-        width: `${birdSize}px`,
-        height: `${birdSize}px`,
-        objectFit: 'contain',
-        objectPosition: 'bottom right',
         bottom: bottomOffset,
         right: rightOffset,
+        width: birdSize,
+        height: birdSize,
       }}
-      className="absolute pixelated-layer"
-      draggable={false}
-    />
+    >
+      {/* Speech bubble */}
+      <div
+        className="absolute pixelated-layer"
+        style={{
+          left: `-${bubbleWidth * 0.85}px`,
+          top: `-${bubbleHeight * 0.57}px`,
+          width: bubbleWidth,
+          height: bubbleHeight,
+        }}
+      >
+        {/* Bubble image */}
+        <img
+          src={speechBubble}
+          alt="speech bubble"
+          draggable={false}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'contain',
+          }}
+        />
+
+        {/* Bubble text + down arrow inline */}
+        <div
+          className="font-pixel text-scene-text"
+          style={{
+            position: 'absolute',
+            inset: `${bubblePaddingY}px ${bubblePaddingX}px`,
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            fontSize: bubbleFontSize,
+            lineHeight: '1.2',
+            pointerEvents: 'none',
+            color: 'inherit',
+            paddingRight: bubbleFontSize * 0.8,
+            gap: Math.round(bubbleFontSize * 0.3),
+          }}
+        >
+          <span className='text-scene-text'>No flying... just scrolling!</span>
+          <img
+            src={downArrow}
+            alt="down arrow"
+            style={{
+              width: bubbleFontSize * 0.5,
+              height: 'auto',
+              flexShrink: 0,
+              paddingBottom: bubbleFontSize * 0.1,
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Bird */}
+      <img
+        ref={imgRef}
+        src={SEQUENCE[0].frame}
+        alt="bird"
+        draggable={false}
+        style={{
+          width: birdSize,
+          height: birdSize,
+          objectFit: 'contain',
+        }}
+      />
+    </div>
   );
 }

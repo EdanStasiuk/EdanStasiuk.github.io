@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,slnt,wght@8..144,-10,100..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+@font-face {
+  font-family: 'Nihonium113';
+  src: url('../src/assets/fonts/nihonium113/Nihonium113.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /**
 * This injects Tailwind's base styles and any base styles registered by
 * plugins.
@@ -38,6 +46,12 @@
   .pixelated-layer {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+  }
+
+  .font-pixel {
+    font-family: 'Nihonium113', monospace;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
   }
 }
 
