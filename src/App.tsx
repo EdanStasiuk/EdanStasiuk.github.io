@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import AboutMe from './components/AboutMe';
-import TechStack from './components/TechStack';
-import PersonalProjects from './components/PersonalProjects';
 import Navbar from './components/Navbar';
 import Hero from './components/hero/Hero';
 import { BROWSER_WIDTH_THRESHOLD } from './Utils/constants';
 import { BrowserWidthProvider } from './Utils/contexts/BrowserWidthContext';
 import Footer from './components/Footer';
-import AcademicProjects from './components/AcademicProjects';
+// import Contact from './components/Contact';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
 
 function App() {
   const [isLowPixelRatio] = useState(true);
@@ -51,11 +51,9 @@ function App() {
           >
             <AboutMe />
             <div className="mb-8" />
-            <TechStack />
+            <Experience />
             <div className="mb-8" />
-            <PersonalProjects />
-            <div className="mb-8" />
-            <AcademicProjects />
+            <Projects />
             <div className="mb-32" />
             {/* <Contact /> */}
           </div>

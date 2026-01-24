@@ -9,7 +9,7 @@ import Modal from './Modal';
 interface Props {
   projectName: string;
   projectDescription: string;
-  projectImageUrl: string;
+  projectImageUrl?: string;
   githubUrl: string;
   websiteUrl?: string;
 }
@@ -129,23 +129,25 @@ export default function Project({
 
       {isVisible && (
         <div
-          className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'flex' : ''} font-robotoFlex font-light`}
+          className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'flex' : ''} font-roboto font-light`}
         >
           <div
             className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[65%]' : 'w-full'} text-[16px] sm:text-[19px] md:text-[22px] whitespace-pre-line mb-6`}
           >
             {projectDescription}
           </div>
-          <div
-            className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[35%] ml-8' : 'w-full'} mb-4 font-thin`}
-          >
-            <img
-              src={projectImageUrl}
-              alt={projectName}
-              className="w-full h-auto rounded-lg cursor-pointer"
-              onClick={openModal}
-            />
-          </div>
+          {projectImageUrl && (
+            <div
+              className={`${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'w-[35%] ml-8' : 'w-full'} mb-4 font-thin`}
+            >
+              <img
+                src={projectImageUrl}
+                alt={projectName}
+                className="w-full h-auto rounded-lg cursor-pointer"
+                onClick={openModal}
+              />
+            </div>
+          )}
         </div>
       )}
 

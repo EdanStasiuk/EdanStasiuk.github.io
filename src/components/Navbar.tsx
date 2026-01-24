@@ -79,11 +79,11 @@ export default function Navbar() {
           </div>
           <div className="flex justify-center px-2">
             <a
-              href="#stack"
+              href="#experience"
               className={`text-center hover:text-[#DF9CFF] ${browserWidth >= BROWSER_WIDTH_THRESHOLD ? 'p-4' : 'p-3'} rounded`}
-              onClick={(e) => scrollToSection(e, 'stack')}
+              onClick={(e) => scrollToSection(e, 'experience')}
             >
-              Stack
+             Experience 
             </a>
           </div>
           <div className="flex justify-center px-2">
