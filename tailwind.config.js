@@ -13,6 +13,7 @@ export default {
     colors: {
       'background': '#87CEEB',
       'hero': '#10689A',
+      'scene-text': '#3E485B',
       'secondary-background': '#232323',
       'tails-background': '#1A1A1A',
       'tails-border': '#343431',

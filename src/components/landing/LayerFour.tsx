@@ -112,23 +112,6 @@ export default function LayerFour({ scrollY }: Props) {
         />
       ))}
 
-      {/* Hero Name */}
-      <div
-        className="absolute z-20 pointer-events-none flex items-center"
-        style={{
-          left: '50%',
-          top: '23.5%',
-          gap: '16px',
-          transform: `translateX(-50%) translateY(${heroParallaxY}px)`,
-          opacity: 1,
-          willChange: 'transform',
-        }}
-      >
-        <span className='text-hero text-[64px] tracking-widest font-hero font-medium'>
-          Edan Stasiuk
-        </span>
-      </div>
-
       {/* Foreground clouds */}
       <img
         src={cloud1}
